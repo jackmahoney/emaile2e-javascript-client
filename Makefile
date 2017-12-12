@@ -10,5 +10,8 @@ update:
 		-i $(API_URL) -o .
 	API_URL=$(API_URL) node shim.js
 
-deploy:
+commit:
+	git add -A . && git commit -m 'deploy' && git push
+
+deploy: update commit
 	npm publish
