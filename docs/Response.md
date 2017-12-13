@@ -1,9 +1,9 @@
-# Emaile2eClient.ResponseInboxDto
+# Emaile2eClient.Response
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **message** | **String** |  | [optional] 
-**payload** | [**InboxDto**](InboxDto.md) |  | [optional] 
+**payload** | **Object** |  | [optional] 
 
 

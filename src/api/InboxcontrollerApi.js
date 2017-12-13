@@ -16,24 +16,24 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ResponseInboxDto', 'model/ResponseListEmailDto', 'model/ResponseListInboxDto'], factory);
+    define(['ApiClient', 'model/Response', 'model/ResponseInboxDto', 'model/ResponseListEmailDto', 'model/ResponseListInboxDto', 'model/SendEmailDto'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ResponseInboxDto'), require('../model/ResponseListEmailDto'), require('../model/ResponseListInboxDto'));
+    module.exports = factory(require('../ApiClient'), require('../model/Response'), require('../model/ResponseInboxDto'), require('../model/ResponseListEmailDto'), require('../model/ResponseListInboxDto'), require('../model/SendEmailDto'));
   } else {
     // Browser globals (root is window)
     if (!root.Emaile2eClient) {
       root.Emaile2eClient = {};
     }
-    root.Emaile2eClient.InboxcontrollerApi = factory(root.Emaile2eClient.ApiClient, root.Emaile2eClient.ResponseInboxDto, root.Emaile2eClient.ResponseListEmailDto, root.Emaile2eClient.ResponseListInboxDto);
+    root.Emaile2eClient.InboxcontrollerApi = factory(root.Emaile2eClient.ApiClient, root.Emaile2eClient.Response, root.Emaile2eClient.ResponseInboxDto, root.Emaile2eClient.ResponseListEmailDto, root.Emaile2eClient.ResponseListInboxDto, root.Emaile2eClient.SendEmailDto);
   }
-}(this, function(ApiClient, ResponseInboxDto, ResponseListEmailDto, ResponseListInboxDto) {
+}(this, function(ApiClient, Response, ResponseInboxDto, ResponseListEmailDto, ResponseListInboxDto, SendEmailDto) {
   'use strict';
 
   /**
    * Inboxcontroller service.
    * @module api/InboxcontrollerApi
-   * @version 0.1.1513081270
+   * @version 0.1.1513202410
    */
 
   /**
@@ -100,6 +100,65 @@
 
 
     /**
+     * Delete an inbox
+     * Delete an inbox and all the emails associated with it.
+     * @param {String} apiKey Your API Key. Sign up and find it in your dashboard.
+     * @param {String} uuid The inbox&#39;s id.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Response} and HTTP response
+     */
+    this.deleteUsingDELETEWithHttpInfo = function(apiKey, uuid) {
+      var postBody = null;
+
+      // verify the required parameter 'apiKey' is set
+      if (apiKey === undefined || apiKey === null) {
+        throw new Error("Missing the required parameter 'apiKey' when calling deleteUsingDELETE");
+      }
+
+      // verify the required parameter 'uuid' is set
+      if (uuid === undefined || uuid === null) {
+        throw new Error("Missing the required parameter 'uuid' when calling deleteUsingDELETE");
+      }
+
+
+      var pathParams = {
+        'uuid': uuid
+      };
+      var queryParams = {
+        'apiKey': apiKey
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['*/*'];
+      var returnType = Response;
+
+      return this.apiClient.callApi(
+        '/inboxes/{uuid}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Delete an inbox
+     * Delete an inbox and all the emails associated with it.
+     * @param {String} apiKey Your API Key. Sign up and find it in your dashboard.
+     * @param {String} uuid The inbox&#39;s id.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Response}
+     */
+    this.deleteUsingDELETE = function(apiKey, uuid) {
+      return this.deleteUsingDELETEWithHttpInfo(apiKey, uuid)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * List your inboxes
      * Return a list of your inboxes. Each inbox has a uuid and an email address. Emails sent to the email address are stored in the inbox and can be fetched via &#x60;/inboxes/{uuid}&#x60;.
      * @param {String} apiKey Your API Key. Sign up and find it in your dashboard.
@@ -151,12 +210,79 @@
 
 
     /**
+     * Send an email
+     * Send an email from the given inbox&#39;s email address. Useful if you need to test a user contacting you, for instance.
+     * @param {String} apiKey Your API Key. Sign up and find it in your dashboard.
+     * @param {String} uuid The inbox&#39;s id.
+     * @param {module:model/SendEmailDto} sendEmailDto The email to send.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Response} and HTTP response
+     */
+    this.sendEmailUsingPOSTWithHttpInfo = function(apiKey, uuid, sendEmailDto) {
+      var postBody = sendEmailDto;
+
+      // verify the required parameter 'apiKey' is set
+      if (apiKey === undefined || apiKey === null) {
+        throw new Error("Missing the required parameter 'apiKey' when calling sendEmailUsingPOST");
+      }
+
+      // verify the required parameter 'uuid' is set
+      if (uuid === undefined || uuid === null) {
+        throw new Error("Missing the required parameter 'uuid' when calling sendEmailUsingPOST");
+      }
+
+      // verify the required parameter 'sendEmailDto' is set
+      if (sendEmailDto === undefined || sendEmailDto === null) {
+        throw new Error("Missing the required parameter 'sendEmailDto' when calling sendEmailUsingPOST");
+      }
+
+
+      var pathParams = {
+        'uuid': uuid
+      };
+      var queryParams = {
+        'apiKey': apiKey
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['*/*'];
+      var returnType = Response;
+
+      return this.apiClient.callApi(
+        '/inboxes/{uuid}', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Send an email
+     * Send an email from the given inbox&#39;s email address. Useful if you need to test a user contacting you, for instance.
+     * @param {String} apiKey Your API Key. Sign up and find it in your dashboard.
+     * @param {String} uuid The inbox&#39;s id.
+     * @param {module:model/SendEmailDto} sendEmailDto The email to send.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Response}
+     */
+    this.sendEmailUsingPOST = function(apiKey, uuid, sendEmailDto) {
+      return this.sendEmailUsingPOSTWithHttpInfo(apiKey, uuid, sendEmailDto)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Fetch emails for a given inbox
-     * Return a list of emails stored in a given inbox. Each email contains various properties including the email body (in eml format), subject, and sender. The &#x60;since&#x60; parameter is a ISO8601 LocalDateTime that will filter for emails received on or after the given DateTime. Note that because an inbox may take 5 to 10 seconds to receive an email, you can use the &#x60;waitFor&#x60; parameter to hold a request open until the desired number of emails is present. If this number is not met after 30 seconds, an error will be returned.
+     * Return a list of emails stored in a given inbox. Each email contains various properties including the email body (in eml format), subject, and sender. The &#x60;since&#x60; parameter is a ISO8601 LocalDateTime that will filter for emails received on or after the given DateTime. Note that because an inbox may take 5 to 10 seconds to receive an email, you can use the &#x60;waitFor&#x60; parameter to hold a request open until the desired number of emails is present. If this number is not met after 60 seconds, an error will be returned.
      * @param {String} apiKey Your API Key. Sign up and find it in your dashboard.
      * @param {String} uuid The inbox&#39;s id.
      * @param {Object} opts Optional parameters
-     * @param {Number} opts.waitFor Wait a maximum of 30 seconds for atleast this many emails in an inbox before returning a result.
+     * @param {Number} opts.minCount Wait a maximum of 60 seconds for atleast this many emails in an inbox before returning a result.
+     * @param {Number} opts.maxWait Maximum seconds API should spend retrying your inbox until the minCount is satisfied
      * @param {Date} opts.since Filter for emails received on or after this ISO8601 LocalDateTime.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ResponseListEmailDto} and HTTP response
      */
@@ -180,7 +306,8 @@
       };
       var queryParams = {
         'apiKey': apiKey,
-        'waitFor': opts['waitFor'],
+        'minCount': opts['minCount'],
+        'maxWait': opts['maxWait'],
         'since': opts['since']
       };
       var headerParams = {
@@ -202,11 +329,12 @@
 
     /**
      * Fetch emails for a given inbox
-     * Return a list of emails stored in a given inbox. Each email contains various properties including the email body (in eml format), subject, and sender. The &#x60;since&#x60; parameter is a ISO8601 LocalDateTime that will filter for emails received on or after the given DateTime. Note that because an inbox may take 5 to 10 seconds to receive an email, you can use the &#x60;waitFor&#x60; parameter to hold a request open until the desired number of emails is present. If this number is not met after 30 seconds, an error will be returned.
+     * Return a list of emails stored in a given inbox. Each email contains various properties including the email body (in eml format), subject, and sender. The &#x60;since&#x60; parameter is a ISO8601 LocalDateTime that will filter for emails received on or after the given DateTime. Note that because an inbox may take 5 to 10 seconds to receive an email, you can use the &#x60;waitFor&#x60; parameter to hold a request open until the desired number of emails is present. If this number is not met after 60 seconds, an error will be returned.
      * @param {String} apiKey Your API Key. Sign up and find it in your dashboard.
      * @param {String} uuid The inbox&#39;s id.
      * @param {Object} opts Optional parameters
-     * @param {Number} opts.waitFor Wait a maximum of 30 seconds for atleast this many emails in an inbox before returning a result.
+     * @param {Number} opts.minCount Wait a maximum of 60 seconds for atleast this many emails in an inbox before returning a result.
+     * @param {Number} opts.maxWait Maximum seconds API should spend retrying your inbox until the minCount is satisfied
      * @param {Date} opts.since Filter for emails received on or after this ISO8601 LocalDateTime.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ResponseListEmailDto}
      */

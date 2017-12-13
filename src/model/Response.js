@@ -25,7 +25,7 @@
     if (!root.Emaile2eClient) {
       root.Emaile2eClient = {};
     }
-    root.Emaile2eClient.EmailDto = factory(root.Emaile2eClient.ApiClient);
+    root.Emaile2eClient.Response = factory(root.Emaile2eClient.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,14 +34,14 @@
 
 
   /**
-   * The EmailDto model module.
-   * @module model/EmailDto
+   * The Response model module.
+   * @module model/Response
    * @version 0.1.1513202410
    */
 
   /**
-   * Constructs a new <code>EmailDto</code>.
-   * @alias module:model/EmailDto
+   * Constructs a new <code>Response</code>.
+   * @alias module:model/Response
    * @class
    */
   var exports = function() {
@@ -49,77 +49,37 @@
 
 
 
-
-
-
-
-
   };
 
   /**
-   * Constructs a <code>EmailDto</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Response</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/EmailDto} obj Optional instance to populate.
-   * @return {module:model/EmailDto} The populated <code>EmailDto</code> instance.
+   * @param {module:model/Response} obj Optional instance to populate.
+   * @return {module:model/Response} The populated <code>Response</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('body')) {
-        obj['body'] = ApiClient.convertToType(data['body'], 'String');
+      if (data.hasOwnProperty('message')) {
+        obj['message'] = ApiClient.convertToType(data['message'], 'String');
       }
-      if (data.hasOwnProperty('from')) {
-        obj['from'] = ApiClient.convertToType(data['from'], 'String');
-      }
-      if (data.hasOwnProperty('id')) {
-        obj['id'] = ApiClient.convertToType(data['id'], 'String');
-      }
-      if (data.hasOwnProperty('received')) {
-        obj['received'] = ApiClient.convertToType(data['received'], 'Date');
-      }
-      if (data.hasOwnProperty('returnPath')) {
-        obj['returnPath'] = ApiClient.convertToType(data['returnPath'], 'String');
-      }
-      if (data.hasOwnProperty('subject')) {
-        obj['subject'] = ApiClient.convertToType(data['subject'], 'String');
-      }
-      if (data.hasOwnProperty('to')) {
-        obj['to'] = ApiClient.convertToType(data['to'], ['String']);
+      if (data.hasOwnProperty('payload')) {
+        obj['payload'] = ApiClient.convertToType(data['payload'], Object);
       }
     }
     return obj;
   }
 
   /**
-   * @member {String} body
+   * @member {String} message
    */
-  exports.prototype['body'] = undefined;
+  exports.prototype['message'] = undefined;
   /**
-   * @member {String} from
+   * @member {Object} payload
    */
-  exports.prototype['from'] = undefined;
-  /**
-   * @member {String} id
-   */
-  exports.prototype['id'] = undefined;
-  /**
-   * @member {Date} received
-   */
-  exports.prototype['received'] = undefined;
-  /**
-   * @member {String} returnPath
-   */
-  exports.prototype['returnPath'] = undefined;
-  /**
-   * @member {String} subject
-   */
-  exports.prototype['subject'] = undefined;
-  /**
-   * @member {Array.<String>} to
-   */
-  exports.prototype['to'] = undefined;
+  exports.prototype['payload'] = undefined;
 
 
 

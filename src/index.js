@@ -16,12 +16,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/EmailDto', 'model/InboxDto', 'model/ResponseInboxDto', 'model/ResponseListEmailDto', 'model/ResponseListInboxDto', 'api/InboxcontrollerApi'], factory);
+    define(['ApiClient', 'model/EmailDto', 'model/InboxDto', 'model/Response', 'model/ResponseInboxDto', 'model/ResponseListEmailDto', 'model/ResponseListInboxDto', 'model/SendEmailDto', 'api/InboxcontrollerApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/EmailDto'), require('./model/InboxDto'), require('./model/ResponseInboxDto'), require('./model/ResponseListEmailDto'), require('./model/ResponseListInboxDto'), require('./api/InboxcontrollerApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/EmailDto'), require('./model/InboxDto'), require('./model/Response'), require('./model/ResponseInboxDto'), require('./model/ResponseListEmailDto'), require('./model/ResponseListInboxDto'), require('./model/SendEmailDto'), require('./api/InboxcontrollerApi'));
   }
-}(function(ApiClient, EmailDto, InboxDto, ResponseInboxDto, ResponseListEmailDto, ResponseListInboxDto, InboxcontrollerApi) {
+}(function(ApiClient, EmailDto, InboxDto, Response, ResponseInboxDto, ResponseListEmailDto, ResponseListInboxDto, SendEmailDto, InboxcontrollerApi) {
   'use strict';
 
   /**
@@ -53,7 +53,7 @@
    * </pre>
    * </p>
    * @module index
-   * @version 0.1.1513081270
+   * @version 0.1.1513202410
    */
   var exports = {
     /**
@@ -72,6 +72,11 @@
      */
     InboxDto: InboxDto,
     /**
+     * The Response model constructor.
+     * @property {module:model/Response}
+     */
+    Response: Response,
+    /**
      * The ResponseInboxDto model constructor.
      * @property {module:model/ResponseInboxDto}
      */
@@ -86,6 +91,11 @@
      * @property {module:model/ResponseListInboxDto}
      */
     ResponseListInboxDto: ResponseListInboxDto,
+    /**
+     * The SendEmailDto model constructor.
+     * @property {module:model/SendEmailDto}
+     */
+    SendEmailDto: SendEmailDto,
     /**
      * The InboxcontrollerApi service constructor.
      * @property {module:api/InboxcontrollerApi}

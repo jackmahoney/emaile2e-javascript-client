@@ -36,7 +36,7 @@
   /**
    * The ResponseInboxDto model module.
    * @module model/ResponseInboxDto
-   * @version 0.1.1513081270
+   * @version 0.1.1513202410
    */
 
   /**
@@ -46,7 +46,6 @@
    */
   var exports = function() {
     var _this = this;
-
 
 
 
@@ -63,9 +62,6 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('error')) {
-        obj['error'] = ApiClient.convertToType(data['error'], 'Boolean');
-      }
       if (data.hasOwnProperty('message')) {
         obj['message'] = ApiClient.convertToType(data['message'], 'String');
       }
@@ -76,10 +72,6 @@
     return obj;
   }
 
-  /**
-   * @member {Boolean} error
-   */
-  exports.prototype['error'] = undefined;
   /**
    * @member {String} message
    */

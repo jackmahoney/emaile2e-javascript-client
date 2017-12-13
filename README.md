@@ -115,7 +115,7 @@ var Emaile2eClient = require('emaile2e-client');
 
 var api = new Emaile2eClient.InboxcontrollerApi()
 
-var apiKey = "apiKey_example"; // {String} Your API Key. Sign up and find it in your dashboard.
+var apiKey = "test"; // {String} Your API Key. Sign up and find it in your dashboard.
 
 api.createUsingPOST(apiKey).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -133,7 +133,9 @@ All URIs are relative to *https://api.emaile2e.com*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *Emaile2eClient.InboxcontrollerApi* | [**createUsingPOST**](docs/InboxcontrollerApi.md#createUsingPOST) | **POST** /inboxes | Create an inbox
+*Emaile2eClient.InboxcontrollerApi* | [**deleteUsingDELETE**](docs/InboxcontrollerApi.md#deleteUsingDELETE) | **DELETE** /inboxes/{uuid} | Delete an inbox
 *Emaile2eClient.InboxcontrollerApi* | [**indexUsingGET**](docs/InboxcontrollerApi.md#indexUsingGET) | **GET** /inboxes | List your inboxes
+*Emaile2eClient.InboxcontrollerApi* | [**sendEmailUsingPOST**](docs/InboxcontrollerApi.md#sendEmailUsingPOST) | **POST** /inboxes/{uuid} | Send an email
 *Emaile2eClient.InboxcontrollerApi* | [**viewUsingGET**](docs/InboxcontrollerApi.md#viewUsingGET) | **GET** /inboxes/{uuid} | Fetch emails for a given inbox
 
 
@@ -141,9 +143,11 @@ Class | Method | HTTP request | Description
 
  - [Emaile2eClient.EmailDto](docs/EmailDto.md)
  - [Emaile2eClient.InboxDto](docs/InboxDto.md)
+ - [Emaile2eClient.Response](docs/Response.md)
  - [Emaile2eClient.ResponseInboxDto](docs/ResponseInboxDto.md)
  - [Emaile2eClient.ResponseListEmailDto](docs/ResponseListEmailDto.md)
  - [Emaile2eClient.ResponseListInboxDto](docs/ResponseListInboxDto.md)
+ - [Emaile2eClient.SendEmailDto](docs/SendEmailDto.md)
 
 
 ## Documentation for Authorization

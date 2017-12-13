@@ -15,75 +15,65 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Emaile2eClient) {
-      root.Emaile2eClient = {};
-    }
-    root.Emaile2eClient.InboxDto = factory(root.Emaile2eClient.ApiClient);
+    factory(root.expect, root.Emaile2eClient);
   }
-}(this, function(ApiClient) {
+}(this, function(expect, Emaile2eClient) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Emaile2eClient.SendEmailDto();
+  });
 
-
-  /**
-   * The InboxDto model module.
-   * @module model/InboxDto
-   * @version 0.1.1513202410
-   */
-
-  /**
-   * Constructs a new <code>InboxDto</code>.
-   * @alias module:model/InboxDto
-   * @class
-   */
-  var exports = function() {
-    var _this = this;
-
-
-
-  };
-
-  /**
-   * Constructs a <code>InboxDto</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/InboxDto} obj Optional instance to populate.
-   * @return {module:model/InboxDto} The populated <code>InboxDto</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('address')) {
-        obj['address'] = ApiClient.convertToType(data['address'], 'String');
-      }
-      if (data.hasOwnProperty('id')) {
-        obj['id'] = ApiClient.convertToType(data['id'], 'String');
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * @member {String} address
-   */
-  exports.prototype['address'] = undefined;
-  /**
-   * @member {String} id
-   */
-  exports.prototype['id'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('SendEmailDto', function() {
+    it('should create an instance of SendEmailDto', function() {
+      // uncomment below and update the code to test SendEmailDto
+      //var instane = new Emaile2eClient.SendEmailDto();
+      //expect(instance).to.be.a(Emaile2eClient.SendEmailDto);
+    });
 
+    it('should have the property to (base name: "to")', function() {
+      // uncomment below and update the code to test the property to
+      //var instane = new Emaile2eClient.SendEmailDto();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+    it('should have the property subject (base name: "subject")', function() {
+      // uncomment below and update the code to test the property subject
+      //var instane = new Emaile2eClient.SendEmailDto();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property body (base name: "body")', function() {
+      // uncomment below and update the code to test the property body
+      //var instane = new Emaile2eClient.SendEmailDto();
+      //expect(instance).to.be();
+    });
+
+  });
+
 }));
-
-

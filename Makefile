@@ -1,4 +1,4 @@
-API_URL=http://api.emaile2e.com/v2/api-docs
+API_URL=https://api.emaile2e.com/v2/api-docs
 
 update:
 	swagger-codegen generate --lang=javascript \
