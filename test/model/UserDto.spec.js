@@ -15,75 +15,59 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/EmailDto'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./EmailDto'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.Emaile2eClient) {
-      root.Emaile2eClient = {};
-    }
-    root.Emaile2eClient.ResponseListEmailDto = factory(root.Emaile2eClient.ApiClient, root.Emaile2eClient.EmailDto);
+    factory(root.expect, root.Emaile2eClient);
   }
-}(this, function(ApiClient, EmailDto) {
+}(this, function(expect, Emaile2eClient) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new Emaile2eClient.UserDto();
+  });
 
-
-  /**
-   * The ResponseListEmailDto model module.
-   * @module model/ResponseListEmailDto
-   * @version 0.1.1513785847
-   */
-
-  /**
-   * Constructs a new <code>ResponseListEmailDto</code>.
-   * @alias module:model/ResponseListEmailDto
-   * @class
-   */
-  var exports = function() {
-    var _this = this;
-
-
-
-  };
-
-  /**
-   * Constructs a <code>ResponseListEmailDto</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ResponseListEmailDto} obj Optional instance to populate.
-   * @return {module:model/ResponseListEmailDto} The populated <code>ResponseListEmailDto</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('message')) {
-        obj['message'] = ApiClient.convertToType(data['message'], 'String');
-      }
-      if (data.hasOwnProperty('payload')) {
-        obj['payload'] = ApiClient.convertToType(data['payload'], [EmailDto]);
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * @member {String} message
-   */
-  exports.prototype['message'] = undefined;
-  /**
-   * @member {Array.<module:model/EmailDto>} payload
-   */
-  exports.prototype['payload'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('UserDto', function() {
+    it('should create an instance of UserDto', function() {
+      // uncomment below and update the code to test UserDto
+      //var instane = new Emaile2eClient.UserDto();
+      //expect(instance).to.be.a(Emaile2eClient.UserDto);
+    });
 
+    it('should have the property apiKey (base name: "apiKey")', function() {
+      // uncomment below and update the code to test the property apiKey
+      //var instane = new Emaile2eClient.UserDto();
+      //expect(instance).to.be();
+    });
 
-  return exports;
+    it('should have the property uuid (base name: "uuid")', function() {
+      // uncomment below and update the code to test the property uuid
+      //var instane = new Emaile2eClient.UserDto();
+      //expect(instance).to.be();
+    });
+
+  });
+
 }));
-
-

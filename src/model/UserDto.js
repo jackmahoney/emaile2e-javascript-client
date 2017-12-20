@@ -16,32 +16,32 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/EmailDto'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./EmailDto'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.Emaile2eClient) {
       root.Emaile2eClient = {};
     }
-    root.Emaile2eClient.ResponseListEmailDto = factory(root.Emaile2eClient.ApiClient, root.Emaile2eClient.EmailDto);
+    root.Emaile2eClient.UserDto = factory(root.Emaile2eClient.ApiClient);
   }
-}(this, function(ApiClient, EmailDto) {
+}(this, function(ApiClient) {
   'use strict';
 
 
 
 
   /**
-   * The ResponseListEmailDto model module.
-   * @module model/ResponseListEmailDto
+   * The UserDto model module.
+   * @module model/UserDto
    * @version 0.1.1513785847
    */
 
   /**
-   * Constructs a new <code>ResponseListEmailDto</code>.
-   * @alias module:model/ResponseListEmailDto
+   * Constructs a new <code>UserDto</code>.
+   * @alias module:model/UserDto
    * @class
    */
   var exports = function() {
@@ -52,34 +52,34 @@
   };
 
   /**
-   * Constructs a <code>ResponseListEmailDto</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>UserDto</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ResponseListEmailDto} obj Optional instance to populate.
-   * @return {module:model/ResponseListEmailDto} The populated <code>ResponseListEmailDto</code> instance.
+   * @param {module:model/UserDto} obj Optional instance to populate.
+   * @return {module:model/UserDto} The populated <code>UserDto</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('message')) {
-        obj['message'] = ApiClient.convertToType(data['message'], 'String');
+      if (data.hasOwnProperty('apiKey')) {
+        obj['apiKey'] = ApiClient.convertToType(data['apiKey'], 'String');
       }
-      if (data.hasOwnProperty('payload')) {
-        obj['payload'] = ApiClient.convertToType(data['payload'], [EmailDto]);
+      if (data.hasOwnProperty('uuid')) {
+        obj['uuid'] = ApiClient.convertToType(data['uuid'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * @member {String} message
+   * @member {String} apiKey
    */
-  exports.prototype['message'] = undefined;
+  exports.prototype['apiKey'] = undefined;
   /**
-   * @member {Array.<module:model/EmailDto>} payload
+   * @member {String} uuid
    */
-  exports.prototype['payload'] = undefined;
+  exports.prototype['uuid'] = undefined;
 
 
 

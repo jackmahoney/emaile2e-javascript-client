@@ -1,20 +1,18 @@
 # emaile2e-client
 
-[Emaile2e](http://www.emaile2e.com) provides a simple REST API that lets you create randomized email addresses and fetch the emails sent to them.
+[Email-e2e](https://emaile2e.com) is and end-to-end email testing service. It has a web-app for managing your account and a REST API for sending and receiving emails from randomized email addresses.
 
 ## Why?
-If your application uses emails at any point, Emaile2e makes testing your app's email integration easier.
-
-Say your app sign-up process sends a verification email. During e2e tests you can create a new random email 
-address for a test user, sign-up, and then fetch the verification email and use the verification code in the next steps of your test.
+Email-e2e was built to test the integration of email services within an app. If your application relies on the sending or receiving of emails, then Email-e2e will let you test that functionality. This is a more common need than you might think: if your app has a sign up process that requires email verification, how do you currently test that?
 
 ## Getting started
 Every API request requires a valid API Key appended as a query parameter. **To obtain an API Key** [visit your account dashboard](http://www.emaile2e.com/dashboard).  
 
-The general flow is as follows: 
-1. Create a new inbox during a test. The email address will be returned in the response. 
-2. Send an email to that address or trigger an action in your test that does so.
-3. Fetch the email for your new inbox and check if their content is what you expected.
+The general flow is as follows:
+
+- Create a new inbox during a test. The email address will be returned in the response. 
+- Send an email to that address or trigger an action in your test that does so.
+- Fetch the email for your new inbox and check if its content is what you expected, or use the content in another action.
 
 ## SDK
 - There is an official [Javascript SDK](https://www.npmjs.com/package/emaile2e-client) available on npm.
@@ -137,6 +135,7 @@ Class | Method | HTTP request | Description
 *Emaile2eClient.InboxcontrollerApi* | [**indexUsingGET**](docs/InboxcontrollerApi.md#indexUsingGET) | **GET** /inboxes | List your inboxes
 *Emaile2eClient.InboxcontrollerApi* | [**sendEmailUsingPOST**](docs/InboxcontrollerApi.md#sendEmailUsingPOST) | **POST** /inboxes/{uuid} | Send an email
 *Emaile2eClient.InboxcontrollerApi* | [**viewUsingGET**](docs/InboxcontrollerApi.md#viewUsingGET) | **GET** /inboxes/{uuid} | Fetch emails for a given inbox
+*Emaile2eClient.UsercontrollerApi* | [**getUserUsingGET**](docs/UsercontrollerApi.md#getUserUsingGET) | **GET** /users/{jwtToken} | Fetch a user
 
 
 ## Documentation for Models
@@ -148,6 +147,7 @@ Class | Method | HTTP request | Description
  - [Emaile2eClient.ResponseListEmailDto](docs/ResponseListEmailDto.md)
  - [Emaile2eClient.ResponseListInboxDto](docs/ResponseListInboxDto.md)
  - [Emaile2eClient.SendEmailDto](docs/SendEmailDto.md)
+ - [Emaile2eClient.UserDto](docs/UserDto.md)
 
 
 ## Documentation for Authorization
