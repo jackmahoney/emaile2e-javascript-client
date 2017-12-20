@@ -33,7 +33,7 @@
   /**
    * Usercontroller service.
    * @module api/UsercontrollerApi
-   * @version 0.1.1513785847
+   * @version 0.1.1513789929
    */
 
   /**
@@ -64,9 +64,9 @@
 
 
       var pathParams = {
-        'jwtToken': jwtToken
       };
       var queryParams = {
+        'jwtToken': jwtToken
       };
       var headerParams = {
       };
@@ -79,7 +79,7 @@
       var returnType = UserDto;
 
       return this.apiClient.callApi(
-        '/users/{jwtToken}', 'GET',
+        '/user', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );

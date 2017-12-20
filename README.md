@@ -135,7 +135,7 @@ Class | Method | HTTP request | Description
 *Emaile2eClient.InboxcontrollerApi* | [**indexUsingGET**](docs/InboxcontrollerApi.md#indexUsingGET) | **GET** /inboxes | List your inboxes
 *Emaile2eClient.InboxcontrollerApi* | [**sendEmailUsingPOST**](docs/InboxcontrollerApi.md#sendEmailUsingPOST) | **POST** /inboxes/{uuid} | Send an email
 *Emaile2eClient.InboxcontrollerApi* | [**viewUsingGET**](docs/InboxcontrollerApi.md#viewUsingGET) | **GET** /inboxes/{uuid} | Fetch emails for a given inbox
-*Emaile2eClient.UsercontrollerApi* | [**getUserUsingGET**](docs/UsercontrollerApi.md#getUserUsingGET) | **GET** /users/{jwtToken} | Fetch a user
+*Emaile2eClient.UsercontrollerApi* | [**getUserUsingGET**](docs/UsercontrollerApi.md#getUserUsingGET) | **GET** /user | Fetch a user
 
 
 ## Documentation for Models

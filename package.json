@@ -1,6 +1,6 @@
 {
   "name": "emaile2e-client",
-  "version": "0.1.1513785847",
+  "version": "0.1.1513789929",
   "description": "The official javascript client for the Emaile2e API. See https://emaile2e.com for more information.",
   "license": "Unlicense",
   "main": "src/index.js",

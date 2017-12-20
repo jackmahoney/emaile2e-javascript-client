@@ -36,7 +36,7 @@
   /**
    * The UserDto model module.
    * @module model/UserDto
-   * @version 0.1.1513785847
+   * @version 0.1.1513789929
    */
 
   /**

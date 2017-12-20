@@ -4,7 +4,7 @@ All URIs are relative to *https://api.emaile2e.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getUserUsingGET**](UsercontrollerApi.md#getUserUsingGET) | **GET** /users/{jwtToken} | Fetch a user
+[**getUserUsingGET**](UsercontrollerApi.md#getUserUsingGET) | **GET** /user | Fetch a user
 
 
 <a name="getUserUsingGET"></a>
