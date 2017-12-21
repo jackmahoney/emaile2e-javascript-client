@@ -4,16 +4,16 @@ All URIs are relative to *https://api.emaile2e.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createUsingPOST**](InboxcontrollerApi.md#createUsingPOST) | **POST** /inboxes | Create an inbox
-[**deleteUsingDELETE**](InboxcontrollerApi.md#deleteUsingDELETE) | **DELETE** /inboxes/{uuid} | Delete an inbox
-[**indexUsingGET**](InboxcontrollerApi.md#indexUsingGET) | **GET** /inboxes | List your inboxes
-[**sendEmailUsingPOST**](InboxcontrollerApi.md#sendEmailUsingPOST) | **POST** /inboxes/{uuid} | Send an email
-[**viewUsingGET**](InboxcontrollerApi.md#viewUsingGET) | **GET** /inboxes/{uuid} | Fetch emails for a given inbox
+[**createRandomInboxUsingPOST**](InboxcontrollerApi.md#createRandomInboxUsingPOST) | **POST** /inboxes | Create an inbox
+[**deleteInboxUsingDELETE**](InboxcontrollerApi.md#deleteInboxUsingDELETE) | **DELETE** /inboxes/{uuid} | Delete an inbox
+[**getEmailsForInboxUsingGET**](InboxcontrollerApi.md#getEmailsForInboxUsingGET) | **GET** /inboxes/{uuid} | Fetch emails for a given inbox
+[**getListOfInboxesUsingGET**](InboxcontrollerApi.md#getListOfInboxesUsingGET) | **GET** /inboxes | List your inboxes
+[**sendEmailFromUserUsingPOST**](InboxcontrollerApi.md#sendEmailFromUserUsingPOST) | **POST** /inboxes/{uuid} | Send an email
 
 
-<a name="createUsingPOST"></a>
-# **createUsingPOST**
-> ResponseInboxDto createUsingPOST(apiKey)
+<a name="createRandomInboxUsingPOST"></a>
+# **createRandomInboxUsingPOST**
+> ResponseInboxDto createRandomInboxUsingPOST(apiKey)
 
 Create an inbox
 
@@ -27,7 +27,7 @@ var apiInstance = new Emaile2eClient.InboxcontrollerApi();
 
 var apiKey = "test"; // String | Your API Key. Sign up and find it in your dashboard.
 
-apiInstance.createUsingPOST(apiKey).then(function(data) {
+apiInstance.createRandomInboxUsingPOST(apiKey).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
   console.error(error);
@@ -54,9 +54,9 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: */*
 
-<a name="deleteUsingDELETE"></a>
-# **deleteUsingDELETE**
-> Response deleteUsingDELETE(apiKey, uuid)
+<a name="deleteInboxUsingDELETE"></a>
+# **deleteInboxUsingDELETE**
+> Response deleteInboxUsingDELETE(apiKey, uuid)
 
 Delete an inbox
 
@@ -72,7 +72,7 @@ var apiKey = "test"; // String | Your API Key. Sign up and find it in your dashb
 
 var uuid = "uuid_example"; // String | The inbox's id.
 
-apiInstance.deleteUsingDELETE(apiKey, uuid).then(function(data) {
+apiInstance.deleteInboxUsingDELETE(apiKey, uuid).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
   console.error(error);
@@ -100,9 +100,63 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: */*
 
-<a name="indexUsingGET"></a>
-# **indexUsingGET**
-> ResponseListInboxDto indexUsingGET(apiKey)
+<a name="getEmailsForInboxUsingGET"></a>
+# **getEmailsForInboxUsingGET**
+> ResponseListEmailDto getEmailsForInboxUsingGET(apiKey, uuid, opts)
+
+Fetch emails for a given inbox
+
+Return a list of emails stored in a given inbox. Each email contains various properties including the email body (in eml format), subject, and sender. The &#x60;since&#x60; parameter is a ISO8601 LocalDateTime that will filter for emails received on or after the given DateTime. Note that because an inbox may take 5 to 10 seconds to receive an email, you can use the &#x60;waitFor&#x60; parameter to hold a request open until the desired number of emails is present. If this number is not met after 60 seconds, an error will be returned.
+
+### Example
+```javascript
+var Emaile2eClient = require('emaile2e-client');
+
+var apiInstance = new Emaile2eClient.InboxcontrollerApi();
+
+var apiKey = "test"; // String | Your API Key. Sign up and find it in your dashboard.
+
+var uuid = "uuid_example"; // String | The inbox's id.
+
+var opts = { 
+  'minCount': 56, // Number | Wait a maximum of 60 seconds for atleast this many emails in an inbox before returning a result.
+  'maxWait': 789, // Number | Maximum seconds API should spend retrying your inbox until the minCount is satisfied
+  'since': new Date("2013-10-20T19:20:30+01:00") // Date | Filter for emails received on or after this ISO8601 LocalDateTime.
+};
+apiInstance.getEmailsForInboxUsingGET(apiKey, uuid, opts).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **apiKey** | **String**| Your API Key. Sign up and find it in your dashboard. | [default to test]
+ **uuid** | **String**| The inbox&#39;s id. | 
+ **minCount** | **Number**| Wait a maximum of 60 seconds for atleast this many emails in an inbox before returning a result. | [optional] 
+ **maxWait** | **Number**| Maximum seconds API should spend retrying your inbox until the minCount is satisfied | [optional] 
+ **since** | **Date**| Filter for emails received on or after this ISO8601 LocalDateTime. | [optional] 
+
+### Return type
+
+[**ResponseListEmailDto**](ResponseListEmailDto.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
+
+<a name="getListOfInboxesUsingGET"></a>
+# **getListOfInboxesUsingGET**
+> ResponseListInboxDto getListOfInboxesUsingGET(apiKey)
 
 List your inboxes
 
@@ -116,7 +170,7 @@ var apiInstance = new Emaile2eClient.InboxcontrollerApi();
 
 var apiKey = "test"; // String | Your API Key. Sign up and find it in your dashboard.
 
-apiInstance.indexUsingGET(apiKey).then(function(data) {
+apiInstance.getListOfInboxesUsingGET(apiKey).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
   console.error(error);
@@ -143,9 +197,9 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: */*
 
-<a name="sendEmailUsingPOST"></a>
-# **sendEmailUsingPOST**
-> Response sendEmailUsingPOST(apiKey, uuid, sendEmailDto)
+<a name="sendEmailFromUserUsingPOST"></a>
+# **sendEmailFromUserUsingPOST**
+> Response sendEmailFromUserUsingPOST(apiKey, uuid, sendEmailDto)
 
 Send an email
 
@@ -163,7 +217,7 @@ var uuid = "uuid_example"; // String | The inbox's id.
 
 var sendEmailDto = new Emaile2eClient.SendEmailDto(); // SendEmailDto | The email to send.
 
-apiInstance.sendEmailUsingPOST(apiKey, uuid, sendEmailDto).then(function(data) {
+apiInstance.sendEmailFromUserUsingPOST(apiKey, uuid, sendEmailDto).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
   console.error(error);
@@ -182,60 +236,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Response**](Response.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: */*
-
-<a name="viewUsingGET"></a>
-# **viewUsingGET**
-> ResponseListEmailDto viewUsingGET(apiKey, uuid, opts)
-
-Fetch emails for a given inbox
-
-Return a list of emails stored in a given inbox. Each email contains various properties including the email body (in eml format), subject, and sender. The &#x60;since&#x60; parameter is a ISO8601 LocalDateTime that will filter for emails received on or after the given DateTime. Note that because an inbox may take 5 to 10 seconds to receive an email, you can use the &#x60;waitFor&#x60; parameter to hold a request open until the desired number of emails is present. If this number is not met after 60 seconds, an error will be returned.
-
-### Example
-```javascript
-var Emaile2eClient = require('emaile2e-client');
-
-var apiInstance = new Emaile2eClient.InboxcontrollerApi();
-
-var apiKey = "test"; // String | Your API Key. Sign up and find it in your dashboard.
-
-var uuid = "uuid_example"; // String | The inbox's id.
-
-var opts = { 
-  'minCount': 56, // Number | Wait a maximum of 60 seconds for atleast this many emails in an inbox before returning a result.
-  'maxWait': 789, // Number | Maximum seconds API should spend retrying your inbox until the minCount is satisfied
-  'since': new Date("2013-10-20T19:20:30+01:00") // Date | Filter for emails received on or after this ISO8601 LocalDateTime.
-};
-apiInstance.viewUsingGET(apiKey, uuid, opts).then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **apiKey** | **String**| Your API Key. Sign up and find it in your dashboard. | [default to test]
- **uuid** | **String**| The inbox&#39;s id. | 
- **minCount** | **Number**| Wait a maximum of 60 seconds for atleast this many emails in an inbox before returning a result. | [optional] 
- **maxWait** | **Number**| Maximum seconds API should spend retrying your inbox until the minCount is satisfied | [optional] 
- **since** | **Date**| Filter for emails received on or after this ISO8601 LocalDateTime. | [optional] 
-
-### Return type
-
-[**ResponseListEmailDto**](ResponseListEmailDto.md)
 
 ### Authorization
 

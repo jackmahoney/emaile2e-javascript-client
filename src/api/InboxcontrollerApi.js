@@ -33,7 +33,7 @@
   /**
    * Inboxcontroller service.
    * @module api/InboxcontrollerApi
-   * @version 0.1.1513789929
+   * @version 0.1.1513898268
    */
 
   /**
@@ -54,12 +54,12 @@
      * @param {String} apiKey Your API Key. Sign up and find it in your dashboard.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ResponseInboxDto} and HTTP response
      */
-    this.createUsingPOSTWithHttpInfo = function(apiKey) {
+    this.createRandomInboxUsingPOSTWithHttpInfo = function(apiKey) {
       var postBody = null;
 
       // verify the required parameter 'apiKey' is set
       if (apiKey === undefined || apiKey === null) {
-        throw new Error("Missing the required parameter 'apiKey' when calling createUsingPOST");
+        throw new Error("Missing the required parameter 'apiKey' when calling createRandomInboxUsingPOST");
       }
 
 
@@ -91,8 +91,8 @@
      * @param {String} apiKey Your API Key. Sign up and find it in your dashboard.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ResponseInboxDto}
      */
-    this.createUsingPOST = function(apiKey) {
-      return this.createUsingPOSTWithHttpInfo(apiKey)
+    this.createRandomInboxUsingPOST = function(apiKey) {
+      return this.createRandomInboxUsingPOSTWithHttpInfo(apiKey)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -106,17 +106,17 @@
      * @param {String} uuid The inbox&#39;s id.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Response} and HTTP response
      */
-    this.deleteUsingDELETEWithHttpInfo = function(apiKey, uuid) {
+    this.deleteInboxUsingDELETEWithHttpInfo = function(apiKey, uuid) {
       var postBody = null;
 
       // verify the required parameter 'apiKey' is set
       if (apiKey === undefined || apiKey === null) {
-        throw new Error("Missing the required parameter 'apiKey' when calling deleteUsingDELETE");
+        throw new Error("Missing the required parameter 'apiKey' when calling deleteInboxUsingDELETE");
       }
 
       // verify the required parameter 'uuid' is set
       if (uuid === undefined || uuid === null) {
-        throw new Error("Missing the required parameter 'uuid' when calling deleteUsingDELETE");
+        throw new Error("Missing the required parameter 'uuid' when calling deleteInboxUsingDELETE");
       }
 
 
@@ -150,125 +150,8 @@
      * @param {String} uuid The inbox&#39;s id.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Response}
      */
-    this.deleteUsingDELETE = function(apiKey, uuid) {
-      return this.deleteUsingDELETEWithHttpInfo(apiKey, uuid)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * List your inboxes
-     * Return a list of your inboxes. Each inbox has a uuid and an email address. Emails sent to the email address are stored in the inbox and can be fetched via &#x60;/inboxes/{uuid}&#x60;.
-     * @param {String} apiKey Your API Key. Sign up and find it in your dashboard.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ResponseListInboxDto} and HTTP response
-     */
-    this.indexUsingGETWithHttpInfo = function(apiKey) {
-      var postBody = null;
-
-      // verify the required parameter 'apiKey' is set
-      if (apiKey === undefined || apiKey === null) {
-        throw new Error("Missing the required parameter 'apiKey' when calling indexUsingGET");
-      }
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-        'apiKey': apiKey
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['*/*'];
-      var returnType = ResponseListInboxDto;
-
-      return this.apiClient.callApi(
-        '/inboxes', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * List your inboxes
-     * Return a list of your inboxes. Each inbox has a uuid and an email address. Emails sent to the email address are stored in the inbox and can be fetched via &#x60;/inboxes/{uuid}&#x60;.
-     * @param {String} apiKey Your API Key. Sign up and find it in your dashboard.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ResponseListInboxDto}
-     */
-    this.indexUsingGET = function(apiKey) {
-      return this.indexUsingGETWithHttpInfo(apiKey)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Send an email
-     * Send an email from the given inbox&#39;s email address. Useful if you need to test a user contacting you, for instance.
-     * @param {String} apiKey Your API Key. Sign up and find it in your dashboard.
-     * @param {String} uuid The inbox&#39;s id.
-     * @param {module:model/SendEmailDto} sendEmailDto The email to send.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Response} and HTTP response
-     */
-    this.sendEmailUsingPOSTWithHttpInfo = function(apiKey, uuid, sendEmailDto) {
-      var postBody = sendEmailDto;
-
-      // verify the required parameter 'apiKey' is set
-      if (apiKey === undefined || apiKey === null) {
-        throw new Error("Missing the required parameter 'apiKey' when calling sendEmailUsingPOST");
-      }
-
-      // verify the required parameter 'uuid' is set
-      if (uuid === undefined || uuid === null) {
-        throw new Error("Missing the required parameter 'uuid' when calling sendEmailUsingPOST");
-      }
-
-      // verify the required parameter 'sendEmailDto' is set
-      if (sendEmailDto === undefined || sendEmailDto === null) {
-        throw new Error("Missing the required parameter 'sendEmailDto' when calling sendEmailUsingPOST");
-      }
-
-
-      var pathParams = {
-        'uuid': uuid
-      };
-      var queryParams = {
-        'apiKey': apiKey
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['*/*'];
-      var returnType = Response;
-
-      return this.apiClient.callApi(
-        '/inboxes/{uuid}', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Send an email
-     * Send an email from the given inbox&#39;s email address. Useful if you need to test a user contacting you, for instance.
-     * @param {String} apiKey Your API Key. Sign up and find it in your dashboard.
-     * @param {String} uuid The inbox&#39;s id.
-     * @param {module:model/SendEmailDto} sendEmailDto The email to send.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Response}
-     */
-    this.sendEmailUsingPOST = function(apiKey, uuid, sendEmailDto) {
-      return this.sendEmailUsingPOSTWithHttpInfo(apiKey, uuid, sendEmailDto)
+    this.deleteInboxUsingDELETE = function(apiKey, uuid) {
+      return this.deleteInboxUsingDELETEWithHttpInfo(apiKey, uuid)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -286,18 +169,18 @@
      * @param {Date} opts.since Filter for emails received on or after this ISO8601 LocalDateTime.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ResponseListEmailDto} and HTTP response
      */
-    this.viewUsingGETWithHttpInfo = function(apiKey, uuid, opts) {
+    this.getEmailsForInboxUsingGETWithHttpInfo = function(apiKey, uuid, opts) {
       opts = opts || {};
       var postBody = null;
 
       // verify the required parameter 'apiKey' is set
       if (apiKey === undefined || apiKey === null) {
-        throw new Error("Missing the required parameter 'apiKey' when calling viewUsingGET");
+        throw new Error("Missing the required parameter 'apiKey' when calling getEmailsForInboxUsingGET");
       }
 
       // verify the required parameter 'uuid' is set
       if (uuid === undefined || uuid === null) {
-        throw new Error("Missing the required parameter 'uuid' when calling viewUsingGET");
+        throw new Error("Missing the required parameter 'uuid' when calling getEmailsForInboxUsingGET");
       }
 
 
@@ -338,8 +221,125 @@
      * @param {Date} opts.since Filter for emails received on or after this ISO8601 LocalDateTime.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ResponseListEmailDto}
      */
-    this.viewUsingGET = function(apiKey, uuid, opts) {
-      return this.viewUsingGETWithHttpInfo(apiKey, uuid, opts)
+    this.getEmailsForInboxUsingGET = function(apiKey, uuid, opts) {
+      return this.getEmailsForInboxUsingGETWithHttpInfo(apiKey, uuid, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * List your inboxes
+     * Return a list of your inboxes. Each inbox has a uuid and an email address. Emails sent to the email address are stored in the inbox and can be fetched via &#x60;/inboxes/{uuid}&#x60;.
+     * @param {String} apiKey Your API Key. Sign up and find it in your dashboard.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ResponseListInboxDto} and HTTP response
+     */
+    this.getListOfInboxesUsingGETWithHttpInfo = function(apiKey) {
+      var postBody = null;
+
+      // verify the required parameter 'apiKey' is set
+      if (apiKey === undefined || apiKey === null) {
+        throw new Error("Missing the required parameter 'apiKey' when calling getListOfInboxesUsingGET");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+        'apiKey': apiKey
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['*/*'];
+      var returnType = ResponseListInboxDto;
+
+      return this.apiClient.callApi(
+        '/inboxes', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * List your inboxes
+     * Return a list of your inboxes. Each inbox has a uuid and an email address. Emails sent to the email address are stored in the inbox and can be fetched via &#x60;/inboxes/{uuid}&#x60;.
+     * @param {String} apiKey Your API Key. Sign up and find it in your dashboard.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ResponseListInboxDto}
+     */
+    this.getListOfInboxesUsingGET = function(apiKey) {
+      return this.getListOfInboxesUsingGETWithHttpInfo(apiKey)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Send an email
+     * Send an email from the given inbox&#39;s email address. Useful if you need to test a user contacting you, for instance.
+     * @param {String} apiKey Your API Key. Sign up and find it in your dashboard.
+     * @param {String} uuid The inbox&#39;s id.
+     * @param {module:model/SendEmailDto} sendEmailDto The email to send.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Response} and HTTP response
+     */
+    this.sendEmailFromUserUsingPOSTWithHttpInfo = function(apiKey, uuid, sendEmailDto) {
+      var postBody = sendEmailDto;
+
+      // verify the required parameter 'apiKey' is set
+      if (apiKey === undefined || apiKey === null) {
+        throw new Error("Missing the required parameter 'apiKey' when calling sendEmailFromUserUsingPOST");
+      }
+
+      // verify the required parameter 'uuid' is set
+      if (uuid === undefined || uuid === null) {
+        throw new Error("Missing the required parameter 'uuid' when calling sendEmailFromUserUsingPOST");
+      }
+
+      // verify the required parameter 'sendEmailDto' is set
+      if (sendEmailDto === undefined || sendEmailDto === null) {
+        throw new Error("Missing the required parameter 'sendEmailDto' when calling sendEmailFromUserUsingPOST");
+      }
+
+
+      var pathParams = {
+        'uuid': uuid
+      };
+      var queryParams = {
+        'apiKey': apiKey
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['*/*'];
+      var returnType = Response;
+
+      return this.apiClient.callApi(
+        '/inboxes/{uuid}', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Send an email
+     * Send an email from the given inbox&#39;s email address. Useful if you need to test a user contacting you, for instance.
+     * @param {String} apiKey Your API Key. Sign up and find it in your dashboard.
+     * @param {String} uuid The inbox&#39;s id.
+     * @param {module:model/SendEmailDto} sendEmailDto The email to send.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Response}
+     */
+    this.sendEmailFromUserUsingPOST = function(apiKey, uuid, sendEmailDto) {
+      return this.sendEmailFromUserUsingPOSTWithHttpInfo(apiKey, uuid, sendEmailDto)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

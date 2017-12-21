@@ -36,7 +36,7 @@
   /**
    * The ResponseListEmailDto model module.
    * @module model/ResponseListEmailDto
-   * @version 0.1.1513789929
+   * @version 0.1.1513898268
    */
 
   /**
