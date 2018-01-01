@@ -1,6 +1,6 @@
-# Emaile2eClient.InboxcontrollerApi
+# MailslurpClient.InboxcontrollerApi
 
-All URIs are relative to *https://api.emaile2e.com*
+All URIs are relative to *https://api.mailslurp.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -21,9 +21,9 @@ Create a new random inbox and return the id and email address for it. Send email
 
 ### Example
 ```javascript
-var Emaile2eClient = require('emaile2e-client');
+var MailslurpClient = require('mailslurp-client');
 
-var apiInstance = new Emaile2eClient.InboxcontrollerApi();
+var apiInstance = new MailslurpClient.InboxcontrollerApi();
 
 var apiKey = "test"; // String | Your API Key. Sign up and find it in your dashboard.
 
@@ -64,9 +64,9 @@ Delete an inbox and all the emails associated with it.
 
 ### Example
 ```javascript
-var Emaile2eClient = require('emaile2e-client');
+var MailslurpClient = require('mailslurp-client');
 
-var apiInstance = new Emaile2eClient.InboxcontrollerApi();
+var apiInstance = new MailslurpClient.InboxcontrollerApi();
 
 var apiKey = "test"; // String | Your API Key. Sign up and find it in your dashboard.
 
@@ -110,9 +110,9 @@ Return a list of emails stored in a given inbox. Each email contains various pro
 
 ### Example
 ```javascript
-var Emaile2eClient = require('emaile2e-client');
+var MailslurpClient = require('mailslurp-client');
 
-var apiInstance = new Emaile2eClient.InboxcontrollerApi();
+var apiInstance = new MailslurpClient.InboxcontrollerApi();
 
 var apiKey = "test"; // String | Your API Key. Sign up and find it in your dashboard.
 
@@ -164,9 +164,9 @@ Return a list of your inboxes. Each inbox has a uuid and an email address. Email
 
 ### Example
 ```javascript
-var Emaile2eClient = require('emaile2e-client');
+var MailslurpClient = require('mailslurp-client');
 
-var apiInstance = new Emaile2eClient.InboxcontrollerApi();
+var apiInstance = new MailslurpClient.InboxcontrollerApi();
 
 var apiKey = "test"; // String | Your API Key. Sign up and find it in your dashboard.
 
@@ -207,15 +207,15 @@ Send an email from the given inbox&#39;s email address. Useful if you need to te
 
 ### Example
 ```javascript
-var Emaile2eClient = require('emaile2e-client');
+var MailslurpClient = require('mailslurp-client');
 
-var apiInstance = new Emaile2eClient.InboxcontrollerApi();
+var apiInstance = new MailslurpClient.InboxcontrollerApi();
 
 var apiKey = "test"; // String | Your API Key. Sign up and find it in your dashboard.
 
 var uuid = "uuid_example"; // String | The inbox's id.
 
-var sendEmailDto = new Emaile2eClient.SendEmailDto(); // SendEmailDto | The email to send.
+var sendEmailDto = new MailslurpClient.SendEmailDto(); // SendEmailDto | The email to send.
 
 apiInstance.sendEmailFromUserUsingPOST(apiKey, uuid, sendEmailDto).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);

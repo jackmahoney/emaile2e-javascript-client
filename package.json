@@ -1,7 +1,7 @@
 {
-  "name": "emaile2e-client",
-  "version": "0.1.1513898268",
-  "description": "The official javascript client for the Emaile2e API. See https://emaile2e.com for more information.",
+  "name": "mailslurp-client",
+  "version": "0.1.1514850209",
+  "description": "The official javascript client for the MailSlurp API. See https://www.mailslurp.com for more information.",
   "license": "Unlicense",
   "main": "src/index.js",
   "scripts": {

@@ -1,4 +1,4 @@
-# Emaile2eClient.SendEmailDto
+# MailslurpClient.SendEmailDto
 
 ## Properties
 Name | Type | Description | Notes

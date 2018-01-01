@@ -1,4 +1,4 @@
-# Emaile2eClient.Response
+# MailslurpClient.Response
 
 ## Properties
 Name | Type | Description | Notes

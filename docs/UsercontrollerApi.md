@@ -1,6 +1,6 @@
-# Emaile2eClient.UsercontrollerApi
+# MailslurpClient.UsercontrollerApi
 
-All URIs are relative to *https://api.emaile2e.com*
+All URIs are relative to *https://api.mailslurp.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -17,9 +17,9 @@ Used by the dashboard to fetch user information.
 
 ### Example
 ```javascript
-var Emaile2eClient = require('emaile2e-client');
+var MailslurpClient = require('mailslurp-client');
 
-var apiInstance = new Emaile2eClient.UsercontrollerApi();
+var apiInstance = new MailslurpClient.UsercontrollerApi();
 
 var jwtToken = "jwtToken_example"; // String | jwtToken
 

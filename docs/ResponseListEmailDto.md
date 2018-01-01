@@ -1,4 +1,4 @@
-# Emaile2eClient.ResponseListEmailDto
+# MailslurpClient.ResponseListEmailDto
 
 ## Properties
 Name | Type | Description | Notes

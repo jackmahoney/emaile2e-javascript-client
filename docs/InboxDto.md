@@ -1,4 +1,4 @@
-# Emaile2eClient.InboxDto
+# MailslurpClient.InboxDto
 
 ## Properties
 Name | Type | Description | Notes
