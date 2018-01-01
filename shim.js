@@ -7,7 +7,7 @@ var apiDocs = execSync('curl -s ' + process.env.API_URL).toString();
 var api = JSON.parse(apiDocs);
 var desc = api.info.description;
 var readme = fs.readFileSync(path, 'utf-8');
-var res = readme.replace(/(# emaile2e-client\n\n)(.|\n)*(\n\n## Installation)/g, '$1' + desc + '$3');
+var res = readme.replace(/(# mailslurp-client\n\n)(.|\n)*(\n\n## Installation)/g, '$1' + desc + '$3');
 fs.writeFileSync(path, res);
 
 // shim package.json
