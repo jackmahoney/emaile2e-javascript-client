@@ -115,11 +115,8 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```javascript
 var MailslurpClient = require('mailslurp-client');
 
-var api = new MailslurpClient.InboxcontrollerApi()
-
-var apiKey = "test"; // {String} Your API Key. Sign up and find it in your dashboard.
-
-api.createRandomInboxUsingPOST(apiKey).then(function(data) {
+var api = new MailslurpClient.AccountControllerApi()
+api.getAccountsUsingGET().then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
   console.error(error);
@@ -134,24 +131,25 @@ All URIs are relative to *https://api.mailslurp.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*MailslurpClient.InboxcontrollerApi* | [**createRandomInboxUsingPOST**](docs/InboxcontrollerApi.md#createRandomInboxUsingPOST) | **POST** /inboxes | Create an inbox
-*MailslurpClient.InboxcontrollerApi* | [**deleteInboxUsingDELETE**](docs/InboxcontrollerApi.md#deleteInboxUsingDELETE) | **DELETE** /inboxes/{uuid} | Delete an inbox
-*MailslurpClient.InboxcontrollerApi* | [**getEmailsForInboxUsingGET**](docs/InboxcontrollerApi.md#getEmailsForInboxUsingGET) | **GET** /inboxes/{uuid} | Fetch emails for a given inbox
-*MailslurpClient.InboxcontrollerApi* | [**getListOfInboxesUsingGET**](docs/InboxcontrollerApi.md#getListOfInboxesUsingGET) | **GET** /inboxes | List your inboxes
-*MailslurpClient.InboxcontrollerApi* | [**sendEmailFromUserUsingPOST**](docs/InboxcontrollerApi.md#sendEmailFromUserUsingPOST) | **POST** /inboxes/{uuid} | Send an email
-*MailslurpClient.UsercontrollerApi* | [**getUserUsingGET**](docs/UsercontrollerApi.md#getUserUsingGET) | **GET** /user | Fetch a user
+*MailslurpClient.AccountControllerApi* | [**getAccountsUsingGET**](docs/AccountControllerApi.md#getAccountsUsingGET) | **GET** /accounts | List available account types
+*MailslurpClient.InboxControllerApi* | [**createRandomInboxUsingPOST**](docs/InboxControllerApi.md#createRandomInboxUsingPOST) | **POST** /inboxes | Create an inbox
+*MailslurpClient.InboxControllerApi* | [**deleteInboxUsingDELETE**](docs/InboxControllerApi.md#deleteInboxUsingDELETE) | **DELETE** /inboxes/{uuid} | Delete an inbox
+*MailslurpClient.InboxControllerApi* | [**getEmailsForInboxUsingGET**](docs/InboxControllerApi.md#getEmailsForInboxUsingGET) | **GET** /inboxes/{uuid} | Fetch emails for a given inbox
+*MailslurpClient.InboxControllerApi* | [**getListOfInboxesUsingGET**](docs/InboxControllerApi.md#getListOfInboxesUsingGET) | **GET** /inboxes | List your inboxes
+*MailslurpClient.InboxControllerApi* | [**sendEmailFromUserUsingPOST**](docs/InboxControllerApi.md#sendEmailFromUserUsingPOST) | **POST** /inboxes/{uuid} | Send an email
 
 
 ## Documentation for Models
 
+ - [MailslurpClient.AccountDto](docs/AccountDto.md)
  - [MailslurpClient.EmailDto](docs/EmailDto.md)
  - [MailslurpClient.InboxDto](docs/InboxDto.md)
  - [MailslurpClient.Response](docs/Response.md)
  - [MailslurpClient.ResponseInboxDto](docs/ResponseInboxDto.md)
+ - [MailslurpClient.ResponseListAccountDto](docs/ResponseListAccountDto.md)
  - [MailslurpClient.ResponseListEmailDto](docs/ResponseListEmailDto.md)
  - [MailslurpClient.ResponseListInboxDto](docs/ResponseListInboxDto.md)
  - [MailslurpClient.SendEmailDto](docs/SendEmailDto.md)
- - [MailslurpClient.UserDto](docs/UserDto.md)
 
 
 ## Documentation for Authorization

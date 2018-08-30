@@ -1,7 +1,7 @@
 API_URL=https://api.mailslurp.com/v2/api-docs
 
 update:
-	swagger-codegen generate --lang=javascript \
+	java -jar ./swagger-codegen-cli.jar generate --lang=javascript \
 		-DusePromises=true \
 		-DprojectName=mailslurp-client\
 		-DprojectLicenseName=ISC\
