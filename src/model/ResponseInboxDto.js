@@ -36,7 +36,7 @@
   /**
    * The ResponseInboxDto model module.
    * @module model/ResponseInboxDto
-   * @version 0.1.1535640818
+   * @version 0.1.1535640868
    */
 
   /**
