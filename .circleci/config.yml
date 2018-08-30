@@ -52,7 +52,6 @@ workflows:
   publish:
     jobs:
       - deploy:
-          type: approval
           filters:
             branches:
-              only: master
+              only: dev
