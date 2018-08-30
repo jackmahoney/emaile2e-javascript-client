@@ -11,7 +11,7 @@ update:
 	API_URL=$(API_URL) node shim.js
 
 commit:
-	git add -A . && git commit -m 'deploy' && git push -q https://$(GITHUB_TOKEN)@github.com/jackmahoney/emaile2e-javascript-client.git master
+	git add -A . && git commit -m 'deploy $(CIRCLE_SHA1)' && git push -q https://$(GITHUB_TOKEN)@github.com/jackmahoney/emaile2e-javascript-client.git master
 
 deploy: update commit
 	npm publish
