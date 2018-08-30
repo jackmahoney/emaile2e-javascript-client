@@ -33,7 +33,7 @@
   /**
    * UserController service.
    * @module api/UserControllerApi
-   * @version 0.1.1535641494
+   * @version 0.1.1535641554
    */
 
   /**
