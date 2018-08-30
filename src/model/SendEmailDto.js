@@ -36,7 +36,7 @@
   /**
    * The SendEmailDto model module.
    * @module model/SendEmailDto
-   * @version 0.1.1535641191
+   * @version 0.1.1535641232
    */
 
   /**
