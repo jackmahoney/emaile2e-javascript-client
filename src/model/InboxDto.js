@@ -36,7 +36,7 @@
   /**
    * The InboxDto model module.
    * @module model/InboxDto
-   * @version 0.1.1535640767
+   * @version 0.1.1535640818
    */
 
   /**
