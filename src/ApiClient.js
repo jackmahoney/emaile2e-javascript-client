@@ -32,7 +32,7 @@
 
   /**
    * @module ApiClient
-   * @version 0.1.1535642032
+   * @version 0.1.1535642089
    */
 
   /**
