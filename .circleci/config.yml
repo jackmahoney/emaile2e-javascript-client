@@ -8,13 +8,24 @@ jobs:
 
     steps:
       - checkout
-      - run: sudo apt-get install make
-      - run: curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-      - run: sudo apt-get install -y nodejs
+
+      - run: 
+          name: Install deps
+          command: |
+            sudo apt-get install make
+            curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+            sudo apt-get install -y nodejs
+
       - run:
           name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
-      - run: make deploy
+          command: |
+            echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+            git config --global user.name "Jack Mahoney (CircleCI)"
+            git config --global user.email "jackmahoney212@gmail.com"
+
+      - run: 
+          name: Execute 
+          command: make deploy
 
 
 workflows:
