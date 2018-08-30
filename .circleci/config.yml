@@ -24,9 +24,28 @@ jobs:
             git config --global user.email "jackmahoney212@gmail.com"
 
       - run: 
-          name: Execute 
-          command: make deploy
+          name: Update
+          command: |
+            java -jar ./swagger-codegen-cli.jar generate --lang=javascript \
+              -DusePromises=true \
+              -DprojectName=mailslurp-client\
+              -DprojectLicenseName=ISC\
+              -DprojectDescription="The official javascript client for the MailSlurp API. See https://www.mailslurp.com for more information."\
+              -DprojectVersion="0.1.$(date +%s)"\
+              -i $API_URL -o .
+            node shim.js
 
+      - run:
+          name: Commit
+          command: |
+            git add -A . 
+            git commit -m "deploy $CIRCLE_SHA1"
+            git push -q https://$GITHUB_TOKEN@github.com/jackmahoney/emaile2e-javascript-client.git master
+
+      - run:
+          name: Publish
+          command: |
+            npm publish
 
 workflows:
   version: 2
