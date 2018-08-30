@@ -33,7 +33,7 @@
   /**
    * InboxController service.
    * @module api/InboxControllerApi
-   * @version 0.1.1535640371
+   * @version 0.1.1535640450
    */
 
   /**
