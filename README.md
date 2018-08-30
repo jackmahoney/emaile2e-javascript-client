@@ -137,6 +137,7 @@ Class | Method | HTTP request | Description
 *MailslurpClient.InboxControllerApi* | [**getEmailsForInboxUsingGET**](docs/InboxControllerApi.md#getEmailsForInboxUsingGET) | **GET** /inboxes/{uuid} | Fetch emails for a given inbox
 *MailslurpClient.InboxControllerApi* | [**getListOfInboxesUsingGET**](docs/InboxControllerApi.md#getListOfInboxesUsingGET) | **GET** /inboxes | List your inboxes
 *MailslurpClient.InboxControllerApi* | [**sendEmailFromUserUsingPOST**](docs/InboxControllerApi.md#sendEmailFromUserUsingPOST) | **POST** /inboxes/{uuid} | Send an email
+*MailslurpClient.UserControllerApi* | [**getUserUsingGET**](docs/UserControllerApi.md#getUserUsingGET) | **GET** /user | Fetch a user
 
 
 ## Documentation for Models
@@ -150,6 +151,7 @@ Class | Method | HTTP request | Description
  - [MailslurpClient.ResponseListEmailDto](docs/ResponseListEmailDto.md)
  - [MailslurpClient.ResponseListInboxDto](docs/ResponseListInboxDto.md)
  - [MailslurpClient.SendEmailDto](docs/SendEmailDto.md)
+ - [MailslurpClient.UserDto](docs/UserDto.md)
 
 
 ## Documentation for Authorization

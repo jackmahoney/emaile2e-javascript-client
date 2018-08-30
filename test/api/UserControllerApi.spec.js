@@ -15,75 +15,51 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/InboxDto'], factory);
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./InboxDto'));
+    factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    if (!root.MailslurpClient) {
-      root.MailslurpClient = {};
-    }
-    root.MailslurpClient.ResponseListInboxDto = factory(root.MailslurpClient.ApiClient, root.MailslurpClient.InboxDto);
+    factory(root.expect, root.MailslurpClient);
   }
-}(this, function(ApiClient, InboxDto) {
+}(this, function(expect, MailslurpClient) {
   'use strict';
 
+  var instance;
 
+  beforeEach(function() {
+    instance = new MailslurpClient.UserControllerApi();
+  });
 
-
-  /**
-   * The ResponseListInboxDto model module.
-   * @module model/ResponseListInboxDto
-   * @version 0.1.1535642444
-   */
-
-  /**
-   * Constructs a new <code>ResponseListInboxDto</code>.
-   * @alias module:model/ResponseListInboxDto
-   * @class
-   */
-  var exports = function() {
-    var _this = this;
-
-
-
-  };
-
-  /**
-   * Constructs a <code>ResponseListInboxDto</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ResponseListInboxDto} obj Optional instance to populate.
-   * @return {module:model/ResponseListInboxDto} The populated <code>ResponseListInboxDto</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('message')) {
-        obj['message'] = ApiClient.convertToType(data['message'], 'String');
-      }
-      if (data.hasOwnProperty('payload')) {
-        obj['payload'] = ApiClient.convertToType(data['payload'], [InboxDto]);
-      }
-    }
-    return obj;
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
   }
 
-  /**
-   * @member {String} message
-   */
-  exports.prototype['message'] = undefined;
-  /**
-   * @member {Array.<module:model/InboxDto>} payload
-   */
-  exports.prototype['payload'] = undefined;
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('UserControllerApi', function() {
+    describe('getUserUsingGET', function() {
+      it('should call getUserUsingGET successfully', function(done) {
+        //uncomment below and update the code to test getUserUsingGET
+        //instance.getUserUsingGET(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+  });
 
-
-  return exports;
 }));
-
-

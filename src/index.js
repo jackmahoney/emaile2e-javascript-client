@@ -16,12 +16,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AccountDto', 'model/EmailDto', 'model/InboxDto', 'model/Response', 'model/ResponseInboxDto', 'model/ResponseListAccountDto', 'model/ResponseListEmailDto', 'model/ResponseListInboxDto', 'model/SendEmailDto', 'api/AccountControllerApi', 'api/InboxControllerApi'], factory);
+    define(['ApiClient', 'model/AccountDto', 'model/EmailDto', 'model/InboxDto', 'model/Response', 'model/ResponseInboxDto', 'model/ResponseListAccountDto', 'model/ResponseListEmailDto', 'model/ResponseListInboxDto', 'model/SendEmailDto', 'model/UserDto', 'api/AccountControllerApi', 'api/InboxControllerApi', 'api/UserControllerApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/AccountDto'), require('./model/EmailDto'), require('./model/InboxDto'), require('./model/Response'), require('./model/ResponseInboxDto'), require('./model/ResponseListAccountDto'), require('./model/ResponseListEmailDto'), require('./model/ResponseListInboxDto'), require('./model/SendEmailDto'), require('./api/AccountControllerApi'), require('./api/InboxControllerApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/AccountDto'), require('./model/EmailDto'), require('./model/InboxDto'), require('./model/Response'), require('./model/ResponseInboxDto'), require('./model/ResponseListAccountDto'), require('./model/ResponseListEmailDto'), require('./model/ResponseListInboxDto'), require('./model/SendEmailDto'), require('./model/UserDto'), require('./api/AccountControllerApi'), require('./api/InboxControllerApi'), require('./api/UserControllerApi'));
   }
-}(function(ApiClient, AccountDto, EmailDto, InboxDto, Response, ResponseInboxDto, ResponseListAccountDto, ResponseListEmailDto, ResponseListInboxDto, SendEmailDto, AccountControllerApi, InboxControllerApi) {
+}(function(ApiClient, AccountDto, EmailDto, InboxDto, Response, ResponseInboxDto, ResponseListAccountDto, ResponseListEmailDto, ResponseListInboxDto, SendEmailDto, UserDto, AccountControllerApi, InboxControllerApi, UserControllerApi) {
   'use strict';
 
   /**
@@ -53,7 +53,7 @@
    * </pre>
    * </p>
    * @module index
-   * @version 0.1.1535637156
+   * @version 0.1.1535642444
    */
   var exports = {
     /**
@@ -107,6 +107,11 @@
      */
     SendEmailDto: SendEmailDto,
     /**
+     * The UserDto model constructor.
+     * @property {module:model/UserDto}
+     */
+    UserDto: UserDto,
+    /**
      * The AccountControllerApi service constructor.
      * @property {module:api/AccountControllerApi}
      */
@@ -115,7 +120,12 @@
      * The InboxControllerApi service constructor.
      * @property {module:api/InboxControllerApi}
      */
-    InboxControllerApi: InboxControllerApi
+    InboxControllerApi: InboxControllerApi,
+    /**
+     * The UserControllerApi service constructor.
+     * @property {module:api/UserControllerApi}
+     */
+    UserControllerApi: UserControllerApi
   };
 
   return exports;

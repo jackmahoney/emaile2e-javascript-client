@@ -36,7 +36,7 @@
   /**
    * The AccountDto model module.
    * @module model/AccountDto
-   * @version 0.1.1535637156
+   * @version 0.1.1535642444
    */
 
   /**

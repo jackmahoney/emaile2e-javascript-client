@@ -16,74 +16,90 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/InboxDto'], factory);
+    define(['ApiClient', 'model/UserDto'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./InboxDto'));
+    module.exports = factory(require('../ApiClient'), require('../model/UserDto'));
   } else {
     // Browser globals (root is window)
     if (!root.MailslurpClient) {
       root.MailslurpClient = {};
     }
-    root.MailslurpClient.ResponseListInboxDto = factory(root.MailslurpClient.ApiClient, root.MailslurpClient.InboxDto);
+    root.MailslurpClient.UserControllerApi = factory(root.MailslurpClient.ApiClient, root.MailslurpClient.UserDto);
   }
-}(this, function(ApiClient, InboxDto) {
+}(this, function(ApiClient, UserDto) {
   'use strict';
 
-
-
-
   /**
-   * The ResponseListInboxDto model module.
-   * @module model/ResponseListInboxDto
+   * UserController service.
+   * @module api/UserControllerApi
    * @version 0.1.1535642444
    */
 
   /**
-   * Constructs a new <code>ResponseListInboxDto</code>.
-   * @alias module:model/ResponseListInboxDto
+   * Constructs a new UserControllerApi. 
+   * @alias module:api/UserControllerApi
    * @class
+   * @param {module:ApiClient} [apiClient] Optional API client implementation to use,
+   * default to {@link module:ApiClient#instance} if unspecified.
    */
-  var exports = function() {
-    var _this = this;
+  var exports = function(apiClient) {
+    this.apiClient = apiClient || ApiClient.instance;
 
 
 
-  };
+    /**
+     * Fetch a user
+     * Used by the dashboard to fetch user information.
+     * @param {String} jwtToken jwtToken
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/UserDto} and HTTP response
+     */
+    this.getUserUsingGETWithHttpInfo = function(jwtToken) {
+      var postBody = null;
 
-  /**
-   * Constructs a <code>ResponseListInboxDto</code> from a plain JavaScript object, optionally creating a new instance.
-   * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-   * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ResponseListInboxDto} obj Optional instance to populate.
-   * @return {module:model/ResponseListInboxDto} The populated <code>ResponseListInboxDto</code> instance.
-   */
-  exports.constructFromObject = function(data, obj) {
-    if (data) {
-      obj = obj || new exports();
-
-      if (data.hasOwnProperty('message')) {
-        obj['message'] = ApiClient.convertToType(data['message'], 'String');
+      // verify the required parameter 'jwtToken' is set
+      if (jwtToken === undefined || jwtToken === null) {
+        throw new Error("Missing the required parameter 'jwtToken' when calling getUserUsingGET");
       }
-      if (data.hasOwnProperty('payload')) {
-        obj['payload'] = ApiClient.convertToType(data['payload'], [InboxDto]);
-      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+        'jwtToken': jwtToken,
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['*/*'];
+      var returnType = UserDto;
+
+      return this.apiClient.callApi(
+        '/user', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
     }
-    return obj;
-  }
 
-  /**
-   * @member {String} message
-   */
-  exports.prototype['message'] = undefined;
-  /**
-   * @member {Array.<module:model/InboxDto>} payload
-   */
-  exports.prototype['payload'] = undefined;
-
-
+    /**
+     * Fetch a user
+     * Used by the dashboard to fetch user information.
+     * @param {String} jwtToken jwtToken
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/UserDto}
+     */
+    this.getUserUsingGET = function(jwtToken) {
+      return this.getUserUsingGETWithHttpInfo(jwtToken)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+  };
 
   return exports;
 }));
-
-
