@@ -1,6 +1,6 @@
 {
   "name": "mailslurp-client",
-  "version": "0.1.1535641051",
+  "version": "0.1.1535641101",
   "description": "The official javascript client for the MailSlurp API. See https://www.mailslurp.com for more information.",
   "license": "Unlicense",
   "main": "src/index.js",
