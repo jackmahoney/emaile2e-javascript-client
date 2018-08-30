@@ -1,5 +1,5 @@
 # mailslurp-client
-
+ 
 [MailSlurp](https://www.mailslurp.com) is an end-to-end email testing service. It has a [web-app](https://www.mailslurp.com/dashboard) for managing your account and a [REST API](https://api.mailslurp.com) for sending and receiving emails from randomly generated email addresses.
 
 ## Why?
