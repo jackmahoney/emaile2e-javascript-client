@@ -36,7 +36,7 @@
   /**
    * The EmailDto model module.
    * @module model/EmailDto
-   * @version 0.1.1535640293
+   * @version 0.1.1535640371
    */
 
   /**
