@@ -33,7 +33,7 @@
   /**
    * AccountController service.
    * @module api/AccountControllerApi
-   * @version 0.1.1535641622
+   * @version 0.1.1535641654
    */
 
   /**

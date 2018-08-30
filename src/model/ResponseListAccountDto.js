@@ -36,7 +36,7 @@
   /**
    * The ResponseListAccountDto model module.
    * @module model/ResponseListAccountDto
-   * @version 0.1.1535641622
+   * @version 0.1.1535641654
    */
 
   /**
