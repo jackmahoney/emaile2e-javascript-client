@@ -1,7 +1,7 @@
 {
-  "name": "mailslurp-api-client",
+  "name": "mailslurp-client",
   "version": "0.0.1",
-  "description": "JS client for MailSlurp email testing API",
+  "description": "Typescript/JS client for MailSlurp email testing API",
   "license": "Unlicense",
   "main": "src/index.js",
   "scripts": {

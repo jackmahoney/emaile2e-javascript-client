@@ -1,6 +1,3 @@
 {
-    "projectName": "mailslurp-client",
-    "projectDescription": "JS client for MailSlurp email testing API",
-    "usePromises": true,
-    "useES6": false
+    "npmName": "mailslurp-client",
 }
