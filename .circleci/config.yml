@@ -33,7 +33,7 @@ jobs:
           command: |
             git add -A . 
             git commit -m "deploy $CIRCLE_SHA1"
-            git push -q https://$GITHUB_TOKEN@github.com/jackmahoney/emaile2e-javascript-client.git master
+            git push -qf https://$GITHUB_TOKEN@github.com/jackmahoney/emaile2e-javascript-client.git master
 
       - run:
           name: Publish
