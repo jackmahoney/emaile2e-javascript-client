@@ -26,7 +26,7 @@ jobs:
       - run: 
           name: Update
           command: |
-            java -jar ./swagger-codegen-cli.jar generate --config ./client-config.json --lang=javascript -i https://api.mailslurp.com/v2/api-docs -DnpmName=mailslurp-client -DprojectVersion="2.0.$(date +%s)"
+            java -jar ./swagger-codegen-cli.jar generate --config ./client-config.json --lang=typescript-fetch -i https://api.mailslurp.com/v2/api-docs -DnpmName=mailslurp-client -DprojectVersion="2.0.$(date +%s)"
             node shim.js
 
       - run:

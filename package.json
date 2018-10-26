@@ -1,25 +1,27 @@
 {
   "name": "mailslurp-client",
-  "version": "2.0.1540563796",
-  "description": "Generated JS/Typescript client for the MailSlurp email testing API. See https://www.mailslurp.com/docs for more information.",
+  "version": "1.0.0",
+  "description": "swagger client for mailslurp-client",
+  "author": "Swagger Codegen Contributors",
+  "keywords": [
+    "fetch",
+    "typescript",
+    "swagger-client",
+    "mailslurp-client"
+  ],
   "license": "Unlicense",
-  "main": "src/index.js",
-  "scripts": {
-    "test": "./node_modules/mocha/bin/mocha --recursive"
-  },
-  "browser": {
-    "fs": false
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "scripts" : {
+    "build": "tsc --outDir dist/",
+    "postinstall": "npm run build"
   },
   "dependencies": {
-    "superagent": "3.5.2"
+    "portable-fetch": "^3.0.0"
   },
   "devDependencies": {
-    "mocha": "~2.3.4",
-    "sinon": "1.17.3",
-    "expect.js": "~0.3.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jackmahoney/emaile2e-javascript-client.git"
+    "@types/isomorphic-fetch": "0.0.34",
+    "@types/node": "^8.0.9",
+    "typescript": "^2.0"
   }
 }
