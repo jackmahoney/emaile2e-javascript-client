@@ -2,7 +2,7 @@ version: 2
 jobs:
   deploy:
     docker:
-      - image: circleci/node:10
+      - image: circleci/java
       
     working_directory: ~/repo
 
@@ -13,7 +13,7 @@ jobs:
           name: Install deps
           command: |
             sudo apt-get install make
-            curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+            curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
             sudo apt-get install -y nodejs
 
       - run:
