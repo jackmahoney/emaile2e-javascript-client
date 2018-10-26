@@ -1,4 +1,4 @@
-# MailslurpApiClient.SendEmailDto
+# MailSlurpApiDocumentation.SendEmailDto
 
 ## Properties
 Name | Type | Description | Notes

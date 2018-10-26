@@ -1,4 +1,4 @@
-# MailslurpApiClient.UserDto
+# MailSlurpApiDocumentation.UserDto
 
 ## Properties
 Name | Type | Description | Notes

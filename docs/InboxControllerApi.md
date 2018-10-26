@@ -1,4 +1,4 @@
-# MailslurpApiClient.InboxControllerApi
+# MailSlurpApiDocumentation.InboxControllerApi
 
 All URIs are relative to *https://api.mailslurp.com*
 
@@ -21,18 +21,21 @@ Create a new random inbox and return the id and email address for it. Send email
 
 ### Example
 ```javascript
-import MailslurpApiClient from 'mailslurp-api-client';
+var MailSlurpApiDocumentation = require('mail_slurp_api_documentation');
 
-let apiInstance = new MailslurpApiClient.InboxControllerApi();
+var apiInstance = new MailSlurpApiDocumentation.InboxControllerApi();
 
-let apiKey = "test"; // String | Your API Key. Sign up and find it in your dashboard.
+var apiKey = "test"; // String | Your API Key. Sign up and find it in your dashboard.
 
-apiInstance.createRandomInboxUsingPOST(apiKey).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.createRandomInboxUsingPOST(apiKey, callback);
 ```
 
 ### Parameters
@@ -64,20 +67,23 @@ Delete an inbox and all the emails associated with it.
 
 ### Example
 ```javascript
-import MailslurpApiClient from 'mailslurp-api-client';
+var MailSlurpApiDocumentation = require('mail_slurp_api_documentation');
 
-let apiInstance = new MailslurpApiClient.InboxControllerApi();
+var apiInstance = new MailSlurpApiDocumentation.InboxControllerApi();
 
-let apiKey = "test"; // String | Your API Key. Sign up and find it in your dashboard.
+var apiKey = "test"; // String | Your API Key. Sign up and find it in your dashboard.
 
-let uuid = "uuid_example"; // String | The inbox's id.
+var uuid = "uuid_example"; // String | The inbox's id.
 
-apiInstance.deleteInboxUsingDELETE(apiKey, uuid).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.deleteInboxUsingDELETE(apiKey, uuid, callback);
 ```
 
 ### Parameters
@@ -110,25 +116,28 @@ Return a list of emails stored in a given inbox. Each email contains various pro
 
 ### Example
 ```javascript
-import MailslurpApiClient from 'mailslurp-api-client';
+var MailSlurpApiDocumentation = require('mail_slurp_api_documentation');
 
-let apiInstance = new MailslurpApiClient.InboxControllerApi();
+var apiInstance = new MailSlurpApiDocumentation.InboxControllerApi();
 
-let apiKey = "test"; // String | Your API Key. Sign up and find it in your dashboard.
+var apiKey = "test"; // String | Your API Key. Sign up and find it in your dashboard.
 
-let uuid = "uuid_example"; // String | The inbox's id.
+var uuid = "uuid_example"; // String | The inbox's id.
 
-let opts = { 
+var opts = { 
   'minCount': 56, // Number | Wait a maximum of 100 seconds for atleast this many emails in an inbox before returning a result.
   'maxWait': 789, // Number | Maximum seconds API should spend retrying your inbox until the minCount is satisfied
   'since': new Date("2013-10-20T19:20:30+01:00") // Date | Filter for emails received on or after this ISO8601 LocalDateTime.
 };
-apiInstance.getEmailsForInboxUsingGET(apiKey, uuid, opts).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getEmailsForInboxUsingGET(apiKey, uuid, opts, callback);
 ```
 
 ### Parameters
@@ -164,18 +173,21 @@ Return a list of your inboxes. Each inbox has a uuid and an email address. Email
 
 ### Example
 ```javascript
-import MailslurpApiClient from 'mailslurp-api-client';
+var MailSlurpApiDocumentation = require('mail_slurp_api_documentation');
 
-let apiInstance = new MailslurpApiClient.InboxControllerApi();
+var apiInstance = new MailSlurpApiDocumentation.InboxControllerApi();
 
-let apiKey = "test"; // String | Your API Key. Sign up and find it in your dashboard.
+var apiKey = "test"; // String | Your API Key. Sign up and find it in your dashboard.
 
-apiInstance.getListOfInboxesUsingGET(apiKey).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getListOfInboxesUsingGET(apiKey, callback);
 ```
 
 ### Parameters
@@ -207,22 +219,25 @@ Send an email from the given inbox&#39;s email address. Useful if you need to te
 
 ### Example
 ```javascript
-import MailslurpApiClient from 'mailslurp-api-client';
+var MailSlurpApiDocumentation = require('mail_slurp_api_documentation');
 
-let apiInstance = new MailslurpApiClient.InboxControllerApi();
+var apiInstance = new MailSlurpApiDocumentation.InboxControllerApi();
 
-let apiKey = "test"; // String | Your API Key. Sign up and find it in your dashboard.
+var apiKey = "test"; // String | Your API Key. Sign up and find it in your dashboard.
 
-let uuid = "uuid_example"; // String | The inbox's id.
+var uuid = "uuid_example"; // String | The inbox's id.
 
-let sendEmailDto = new MailslurpApiClient.SendEmailDto(); // SendEmailDto | The email to send.
+var sendEmailDto = new MailSlurpApiDocumentation.SendEmailDto(); // SendEmailDto | The email to send.
 
-apiInstance.sendEmailFromUserUsingPOST(apiKey, uuid, sendEmailDto).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.sendEmailFromUserUsingPOST(apiKey, uuid, sendEmailDto, callback);
 ```
 
 ### Parameters

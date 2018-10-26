@@ -1,4 +1,4 @@
-# MailslurpApiClient.AccountControllerApi
+# MailSlurpApiDocumentation.AccountControllerApi
 
 All URIs are relative to *https://api.mailslurp.com*
 
@@ -18,20 +18,23 @@ For use in dashboard
 
 ### Example
 ```javascript
-import MailslurpApiClient from 'mailslurp-api-client';
+var MailSlurpApiDocumentation = require('mail_slurp_api_documentation');
 
-let apiInstance = new MailslurpApiClient.AccountControllerApi();
+var apiInstance = new MailSlurpApiDocumentation.AccountControllerApi();
 
-let jwtToken = "jwtToken_example"; // String | Cognito ID obtained during login
+var jwtToken = "jwtToken_example"; // String | Cognito ID obtained during login
 
-let stripeToken = "stripeToken_example"; // String | Stripe user payment confirmation token
+var stripeToken = "stripeToken_example"; // String | Stripe user payment confirmation token
 
-apiInstance.createSubscriptionUsingPOST(jwtToken, stripeToken).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.createSubscriptionUsingPOST(jwtToken, stripeToken, callback);
 ```
 
 ### Parameters
@@ -64,15 +67,18 @@ For use in dashboard
 
 ### Example
 ```javascript
-import MailslurpApiClient from 'mailslurp-api-client';
+var MailSlurpApiDocumentation = require('mail_slurp_api_documentation');
 
-let apiInstance = new MailslurpApiClient.AccountControllerApi();
-apiInstance.getAccountsUsingGET().then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
+var apiInstance = new MailSlurpApiDocumentation.AccountControllerApi();
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getAccountsUsingGET(callback);
 ```
 
 ### Parameters
