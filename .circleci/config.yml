@@ -30,6 +30,7 @@ jobs:
             node shim.js
             npm install
             npm run build
+            npm run test
 
       - run:
           name: Commit
