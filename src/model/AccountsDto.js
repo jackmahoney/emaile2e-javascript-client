@@ -13,21 +13,21 @@
 
 
 import ApiClient from '../ApiClient';
-import InboxDto from './InboxDto';
+import AccountDto from './AccountDto';
 
 
 
 
 
 /**
-* The ResponseListInboxDto model module.
-* @module model/ResponseListInboxDto
+* The AccountsDto model module.
+* @module model/AccountsDto
 * @version 0.0.1
 */
-export default class ResponseListInboxDto {
+export default class AccountsDto {
     /**
-    * Constructs a new <code>ResponseListInboxDto</code>.
-    * @alias module:model/ResponseListInboxDto
+    * Constructs a new <code>AccountsDto</code>.
+    * @alias module:model/AccountsDto
     * @class
     */
 
@@ -43,38 +43,38 @@ export default class ResponseListInboxDto {
     }
 
     /**
-    * Constructs a <code>ResponseListInboxDto</code> from a plain JavaScript object, optionally creating a new instance.
+    * Constructs a <code>AccountsDto</code> from a plain JavaScript object, optionally creating a new instance.
     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
     * @param {Object} data The plain JavaScript object bearing properties of interest.
-    * @param {module:model/ResponseListInboxDto} obj Optional instance to populate.
-    * @return {module:model/ResponseListInboxDto} The populated <code>ResponseListInboxDto</code> instance.
+    * @param {module:model/AccountsDto} obj Optional instance to populate.
+    * @return {module:model/AccountsDto} The populated <code>AccountsDto</code> instance.
     */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new ResponseListInboxDto();
+            obj = obj || new AccountsDto();
 
             
             
             
 
-            if (data.hasOwnProperty('message')) {
-                obj['message'] = ApiClient.convertToType(data['message'], 'String');
+            if (data.hasOwnProperty('free')) {
+                obj['free'] = AccountDto.constructFromObject(data['free']);
             }
-            if (data.hasOwnProperty('payload')) {
-                obj['payload'] = ApiClient.convertToType(data['payload'], [InboxDto]);
+            if (data.hasOwnProperty('paid')) {
+                obj['paid'] = AccountDto.constructFromObject(data['paid']);
             }
         }
         return obj;
     }
 
     /**
-    * @member {String} message
+    * @member {module:model/AccountDto} free
     */
-    message = undefined;
+    free = undefined;
     /**
-    * @member {Array.<module:model/InboxDto>} payload
+    * @member {module:model/AccountDto} paid
     */
-    payload = undefined;
+    paid = undefined;
 
 
 

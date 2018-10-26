@@ -1,4 +1,4 @@
-# MailslurpClient.Response
+# MailslurpApiClient.Response
 
 ## Properties
 Name | Type | Description | Notes

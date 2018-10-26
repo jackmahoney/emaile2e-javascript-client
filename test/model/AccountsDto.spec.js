@@ -11,78 +11,61 @@
  *
  */
 
+(function(root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD.
+    define(['expect.js', '../../src/index'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    // CommonJS-like environments that support module.exports, like Node.
+    factory(require('expect.js'), require('../../src/index'));
+  } else {
+    // Browser globals (root is window)
+    factory(root.expect, root.MailslurpApiClient);
+  }
+}(this, function(expect, MailslurpApiClient) {
+  'use strict';
 
-import ApiClient from '../ApiClient';
-import InboxDto from './InboxDto';
+  var instance;
 
+  beforeEach(function() {
+    instance = new MailslurpApiClient.AccountsDto();
+  });
 
+  var getProperty = function(object, getter, property) {
+    // Use getter method if present; otherwise, get the property directly.
+    if (typeof object[getter] === 'function')
+      return object[getter]();
+    else
+      return object[property];
+  }
 
+  var setProperty = function(object, setter, property, value) {
+    // Use setter method if present; otherwise, set the property directly.
+    if (typeof object[setter] === 'function')
+      object[setter](value);
+    else
+      object[property] = value;
+  }
 
+  describe('AccountsDto', function() {
+    it('should create an instance of AccountsDto', function() {
+      // uncomment below and update the code to test AccountsDto
+      //var instane = new MailslurpApiClient.AccountsDto();
+      //expect(instance).to.be.a(MailslurpApiClient.AccountsDto);
+    });
 
-/**
-* The ResponseListInboxDto model module.
-* @module model/ResponseListInboxDto
-* @version 0.0.1
-*/
-export default class ResponseListInboxDto {
-    /**
-    * Constructs a new <code>ResponseListInboxDto</code>.
-    * @alias module:model/ResponseListInboxDto
-    * @class
-    */
+    it('should have the property free (base name: "free")', function() {
+      // uncomment below and update the code to test the property free
+      //var instane = new MailslurpApiClient.AccountsDto();
+      //expect(instance).to.be();
+    });
 
-    constructor() {
-        
+    it('should have the property paid (base name: "paid")', function() {
+      // uncomment below and update the code to test the property paid
+      //var instane = new MailslurpApiClient.AccountsDto();
+      //expect(instance).to.be();
+    });
 
-        
-        
+  });
 
-        
-
-        
-    }
-
-    /**
-    * Constructs a <code>ResponseListInboxDto</code> from a plain JavaScript object, optionally creating a new instance.
-    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
-    * @param {Object} data The plain JavaScript object bearing properties of interest.
-    * @param {module:model/ResponseListInboxDto} obj Optional instance to populate.
-    * @return {module:model/ResponseListInboxDto} The populated <code>ResponseListInboxDto</code> instance.
-    */
-    static constructFromObject(data, obj) {
-        if (data) {
-            obj = obj || new ResponseListInboxDto();
-
-            
-            
-            
-
-            if (data.hasOwnProperty('message')) {
-                obj['message'] = ApiClient.convertToType(data['message'], 'String');
-            }
-            if (data.hasOwnProperty('payload')) {
-                obj['payload'] = ApiClient.convertToType(data['payload'], [InboxDto]);
-            }
-        }
-        return obj;
-    }
-
-    /**
-    * @member {String} message
-    */
-    message = undefined;
-    /**
-    * @member {Array.<module:model/InboxDto>} payload
-    */
-    payload = undefined;
-
-
-
-
-
-
-
-
-}
-
-
+}));

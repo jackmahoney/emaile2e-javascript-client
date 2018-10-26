@@ -1,4 +1,4 @@
-# MailslurpClient.InboxControllerApi
+# MailslurpApiClient.InboxControllerApi
 
 All URIs are relative to *https://api.mailslurp.com*
 
@@ -21,15 +21,15 @@ Create a new random inbox and return the id and email address for it. Send email
 
 ### Example
 ```javascript
-var MailslurpClient = require('mailslurp-client');
+import MailslurpApiClient from 'mailslurp-api-client';
 
-var apiInstance = new MailslurpClient.InboxControllerApi();
+let apiInstance = new MailslurpApiClient.InboxControllerApi();
 
-var apiKey = "test"; // String | Your API Key. Sign up and find it in your dashboard.
+let apiKey = "test"; // String | Your API Key. Sign up and find it in your dashboard.
 
-apiInstance.createRandomInboxUsingPOST(apiKey).then(function(data) {
+apiInstance.createRandomInboxUsingPOST(apiKey).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
+}, (error) => {
   console.error(error);
 });
 
@@ -64,17 +64,17 @@ Delete an inbox and all the emails associated with it.
 
 ### Example
 ```javascript
-var MailslurpClient = require('mailslurp-client');
+import MailslurpApiClient from 'mailslurp-api-client';
 
-var apiInstance = new MailslurpClient.InboxControllerApi();
+let apiInstance = new MailslurpApiClient.InboxControllerApi();
 
-var apiKey = "test"; // String | Your API Key. Sign up and find it in your dashboard.
+let apiKey = "test"; // String | Your API Key. Sign up and find it in your dashboard.
 
-var uuid = "uuid_example"; // String | The inbox's id.
+let uuid = "uuid_example"; // String | The inbox's id.
 
-apiInstance.deleteInboxUsingDELETE(apiKey, uuid).then(function(data) {
+apiInstance.deleteInboxUsingDELETE(apiKey, uuid).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
+}, (error) => {
   console.error(error);
 });
 
@@ -110,22 +110,22 @@ Return a list of emails stored in a given inbox. Each email contains various pro
 
 ### Example
 ```javascript
-var MailslurpClient = require('mailslurp-client');
+import MailslurpApiClient from 'mailslurp-api-client';
 
-var apiInstance = new MailslurpClient.InboxControllerApi();
+let apiInstance = new MailslurpApiClient.InboxControllerApi();
 
-var apiKey = "test"; // String | Your API Key. Sign up and find it in your dashboard.
+let apiKey = "test"; // String | Your API Key. Sign up and find it in your dashboard.
 
-var uuid = "uuid_example"; // String | The inbox's id.
+let uuid = "uuid_example"; // String | The inbox's id.
 
-var opts = { 
+let opts = { 
   'minCount': 56, // Number | Wait a maximum of 100 seconds for atleast this many emails in an inbox before returning a result.
   'maxWait': 789, // Number | Maximum seconds API should spend retrying your inbox until the minCount is satisfied
   'since': new Date("2013-10-20T19:20:30+01:00") // Date | Filter for emails received on or after this ISO8601 LocalDateTime.
 };
-apiInstance.getEmailsForInboxUsingGET(apiKey, uuid, opts).then(function(data) {
+apiInstance.getEmailsForInboxUsingGET(apiKey, uuid, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
+}, (error) => {
   console.error(error);
 });
 
@@ -164,15 +164,15 @@ Return a list of your inboxes. Each inbox has a uuid and an email address. Email
 
 ### Example
 ```javascript
-var MailslurpClient = require('mailslurp-client');
+import MailslurpApiClient from 'mailslurp-api-client';
 
-var apiInstance = new MailslurpClient.InboxControllerApi();
+let apiInstance = new MailslurpApiClient.InboxControllerApi();
 
-var apiKey = "test"; // String | Your API Key. Sign up and find it in your dashboard.
+let apiKey = "test"; // String | Your API Key. Sign up and find it in your dashboard.
 
-apiInstance.getListOfInboxesUsingGET(apiKey).then(function(data) {
+apiInstance.getListOfInboxesUsingGET(apiKey).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
+}, (error) => {
   console.error(error);
 });
 
@@ -207,19 +207,19 @@ Send an email from the given inbox&#39;s email address. Useful if you need to te
 
 ### Example
 ```javascript
-var MailslurpClient = require('mailslurp-client');
+import MailslurpApiClient from 'mailslurp-api-client';
 
-var apiInstance = new MailslurpClient.InboxControllerApi();
+let apiInstance = new MailslurpApiClient.InboxControllerApi();
 
-var apiKey = "test"; // String | Your API Key. Sign up and find it in your dashboard.
+let apiKey = "test"; // String | Your API Key. Sign up and find it in your dashboard.
 
-var uuid = "uuid_example"; // String | The inbox's id.
+let uuid = "uuid_example"; // String | The inbox's id.
 
-var sendEmailDto = new MailslurpClient.SendEmailDto(); // SendEmailDto | The email to send.
+let sendEmailDto = new MailslurpApiClient.SendEmailDto(); // SendEmailDto | The email to send.
 
-apiInstance.sendEmailFromUserUsingPOST(apiKey, uuid, sendEmailDto).then(function(data) {
+apiInstance.sendEmailFromUserUsingPOST(apiKey, uuid, sendEmailDto).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
+}, (error) => {
   console.error(error);
 });
 

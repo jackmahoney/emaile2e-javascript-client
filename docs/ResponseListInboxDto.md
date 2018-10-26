@@ -1,4 +1,4 @@
-# MailslurpClient.ResponseListInboxDto
+# MailslurpApiClient.ResponseListInboxDto
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# MailslurpClient.UserControllerApi
+# MailslurpApiClient.UserControllerApi
 
 All URIs are relative to *https://api.mailslurp.com*
 
@@ -17,15 +17,15 @@ Used by the dashboard to fetch user information.
 
 ### Example
 ```javascript
-var MailslurpClient = require('mailslurp-client');
+import MailslurpApiClient from 'mailslurp-api-client';
 
-var apiInstance = new MailslurpClient.UserControllerApi();
+let apiInstance = new MailslurpApiClient.UserControllerApi();
 
-var jwtToken = "jwtToken_example"; // String | jwtToken
+let jwtToken = "jwtToken_example"; // String | Cognito ID obtained during login
 
-apiInstance.getUserUsingGET(jwtToken).then(function(data) {
+apiInstance.getUserUsingGET(jwtToken).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
+}, (error) => {
   console.error(error);
 });
 
@@ -35,7 +35,7 @@ apiInstance.getUserUsingGET(jwtToken).then(function(data) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **jwtToken** | **String**| jwtToken | 
+ **jwtToken** | **String**| Cognito ID obtained during login | 
 
 ### Return type
 

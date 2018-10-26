@@ -26,14 +26,7 @@ jobs:
       - run: 
           name: Update
           command: |
-            java -jar ./swagger-codegen-cli.jar generate --lang=javascript \
-              -DusePromises=true \
-              -DprojectName=mailslurp-client\
-              -DprojectLicenseName=ISC\
-              -DprojectDescription="The official javascript client for the MailSlurp API. See https://www.mailslurp.com for more information."\
-              -DprojectVersion="0.1.$(date +%s)"\
-              -i $API_URL -o .
-            node shim.js
+            java -jar ./swagger-codegen-cli.jar generate --config ./client-config.json --lang=javascript -i https://api.mailslurp.com/v2/api-docs -DprojectVersion="0.1.$(date +%s)"
 
       - run:
           name: Commit

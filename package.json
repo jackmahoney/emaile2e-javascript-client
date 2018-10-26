@@ -1,25 +1,26 @@
 {
-  "name": "mailslurp-client",
-  "version": "0.1.1535642444",
-  "description": "The official javascript client for the MailSlurp API. See https://www.mailslurp.com for more information.",
+  "name": "mailslurp-api-client",
+  "version": "0.0.1",
+  "description": "JS client for MailSlurp email testing API",
   "license": "Unlicense",
   "main": "src/index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha --recursive"
+    "test": "mocha --compilers js:babel-core/register --recursive"
   },
   "browser": {
     "fs": false
   },
   "dependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
     "superagent": "3.5.2"
   },
   "devDependencies": {
+    "babel-core": "6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "expect.js": "~0.3.1",
     "mocha": "~2.3.4",
-    "sinon": "1.17.3",
-    "expect.js": "~0.3.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jackmahoney/emaile2e-javascript-client.git"
+    "sinon": "1.17.3"
   }
 }
