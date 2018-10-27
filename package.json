@@ -1,24 +1,31 @@
 {
-    "name": "mailslurp-client",
-    "version": "1.0.0",
-    "description": "NodeJS client for mailslurp-client",
-    "repository": "GIT_USER_ID/GIT_REPO_ID",
-    "main": "api.js",
-    "types": "api.d.ts",
-    "scripts": {
-        "clean": "rm -Rf node_modules/ *.js",
-        "build": "tsc",
-        "test": "npm run build && node client.js"
-    },
-    "author": "Swagger Codegen Contributors",
-    "license": "Unlicense",
-    "dependencies": {
-        "bluebird": "^3.5.0",
-        "request": "^2.81.0",
-        "@types/bluebird": "*",
-        "@types/request": "*"
-    },
-    "devDependencies": {
-        "typescript": "^2.4.2"
-    }
+  "name": "mailslurp-client",
+  "version": "2.2.1540651198282",
+  "description": "Generated JS/Typescript client for the MailSlurp email testing API. See https://www.mailslurp.com/docs for more information.",
+  "author": "Swagger Codegen Contributors",
+  "keywords": [
+    "fetch",
+    "typescript",
+    "swagger-client",
+    "mailslurp-client"
+  ],
+  "license": "Unlicense",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc --outDir dist/",
+    "postinstall": "npm run build"
+  },
+  "dependencies": {
+    "portable-fetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/isomorphic-fetch": "0.0.34",
+    "@types/node": "^8.0.9",
+    "typescript": "^2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jackmahoney/emaile2e-javascript-client.git"
+  }
 }

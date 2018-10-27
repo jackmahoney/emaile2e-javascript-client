@@ -1,6 +1,6 @@
 /**
  * MailSlurp API Documentation
- * [MailSlurp](https://www.mailslurp.com) is an end-to-end email testing service. It has a [web-app](https://www.mailslurp.com/dashboard) for managing your account and a [REST API](https://api.mailslurp.com) for sending and receiving emails from randomly generated email addresses.  ## Why? MailSlurp was built to test the integration of email services within an app. If your application relies on the sending or receiving of emails, then MailSlurp will let you test that functionality. This is a more common need than you might think: if your app has a sign up process that requires email verification, how do you currently test that?  ## Getting started - [API Docs](https://www.mailslurp.com/documentation) - [Code Examples](https://www.mailslurp.com/documentation/examples) - [Swagger Definition](https://api.mailslurp.com/v2/api-docs)  Every API request requires a valid API Key appended as a query parameter. [To obtain an API Key visit your account dashboard](https://www.mailslurp.com/dashboard).    The general flow is as follows:  - Create a new inbox during a test. The email address will be returned in the response.  - Send an email to that address or trigger an action in your test that does so. - Fetch the email for your new inbox and check if its content is what you expected, or use the content in another action.  ## SDK - There is an official [Javascript SDK](https://www.npmjs.com/package/mailslurp-client) available on npm. - You can also use the [swagger JSON definition](https://api.mailslurp.com/v2/api-docs) and [swagger-codegen](https://github.com/swagger-api/swagger-codegen) to generate a swagger client in a language of your choice.  ## Legal The Mailslurp API code is owned by [PettmanUG](http://pettmanug.site) and uses a proprietary [software licence](http://www.binpress.com/license/view/l/c8376a01eca7465027a978d3fde5a1e2). The SDKs are free to use in any project and have an ISC licence.  ## Bugs, features, support To report bugs or request features please see the [contact page](https://www.mailslurp.com/contact). For help see [support](https://www.mailslurp.com/support).
+ * [MailSlurp](https://www.mailslurp.com) is an end-to-end email testing service. It has a [web-app](https://www.mailslurp.com/dashboard) for managing your account and a [REST API](https://api.mailslurp.com) for sending and receiving emails from randomly generated email addresses.  ## Why? MailSlurp was built to test the integration of email services within an app. If your application relies on the sending or receiving of emails, then MailSlurp will let you test that functionality. This is a more common need than you might think: if your app has a sign up process that requires email verification, how do you currently test that?  ## Getting started - [API Docs](https://www.mailslurp.com/documentation) - [Code Examples](https://www.mailslurp.com/documentation/examples) - [Swagger Definition](https://api.mailslurp.com/v2/api-docs)  Every API request requires a valid API Key appended as a query parameter. [To obtain an API Key visit your account dashboard](https://www.mailslurp.com/dashboard).    The general flow is as follows:  - Create a new inbox during a test. The email address will be returned in the apiReponse. - Send an email to that address or trigger an action in your test that does so. - Fetch the email for your new inbox and check if its content is what you expected, or use the content in another action.  ## SDK - There is an official [Javascript SDK](https://www.npmjs.com/package/mailslurp-client) available on npm. - You can also use the [swagger JSON definition](https://api.mailslurp.com/v2/api-docs) and [swagger-codegen](https://github.com/swagger-api/swagger-codegen) to generate a swagger client in a language of your choice.  ## Legal The Mailslurp API code is owned by [PettmanUG](http://pettmanug.site) and uses a proprietary [software licence](http://www.binpress.com/license/view/l/c8376a01eca7465027a978d3fde5a1e2). The SDKs are free to use in any project and have an ISC licence.  ## Bugs, features, support To report bugs or request features please see the [contact page](https://www.mailslurp.com/contact). For help see [support](https://www.mailslurp.com/support).
  *
  * OpenAPI spec version: 0.0.1
  *
@@ -133,6 +133,82 @@ export interface AccountsDto {
 /**
  *
  * @export
+ * @interface ApiReponse
+ */
+export interface ApiReponse {
+    /**
+     *
+     * @type {string}
+     * @memberof ApiReponse
+     */
+    message?: string;
+    /**
+     *
+     * @type {any}
+     * @memberof ApiReponse
+     */
+    payload?: any;
+}
+/**
+ *
+ * @export
+ * @interface ApiReponseInboxDto
+ */
+export interface ApiReponseInboxDto {
+    /**
+     *
+     * @type {string}
+     * @memberof ApiReponseInboxDto
+     */
+    message?: string;
+    /**
+     *
+     * @type {InboxDto}
+     * @memberof ApiReponseInboxDto
+     */
+    payload?: InboxDto;
+}
+/**
+ *
+ * @export
+ * @interface ApiReponseListEmailDto
+ */
+export interface ApiReponseListEmailDto {
+    /**
+     *
+     * @type {string}
+     * @memberof ApiReponseListEmailDto
+     */
+    message?: string;
+    /**
+     *
+     * @type {Array&lt;EmailDto&gt;}
+     * @memberof ApiReponseListEmailDto
+     */
+    payload?: Array<EmailDto>;
+}
+/**
+ *
+ * @export
+ * @interface ApiReponseListInboxDto
+ */
+export interface ApiReponseListInboxDto {
+    /**
+     *
+     * @type {string}
+     * @memberof ApiReponseListInboxDto
+     */
+    message?: string;
+    /**
+     *
+     * @type {Array&lt;InboxDto&gt;}
+     * @memberof ApiReponseListInboxDto
+     */
+    payload?: Array<InboxDto>;
+}
+/**
+ *
+ * @export
  * @interface EmailDto
  */
 export interface EmailDto {
@@ -197,82 +273,6 @@ export interface InboxDto {
      * @memberof InboxDto
      */
     id?: string;
-}
-/**
- *
- * @export
- * @interface Response
- */
-export interface Response {
-    /**
-     *
-     * @type {string}
-     * @memberof Response
-     */
-    message?: string;
-    /**
-     *
-     * @type {any}
-     * @memberof Response
-     */
-    payload?: any;
-}
-/**
- *
- * @export
- * @interface ResponseInboxDto
- */
-export interface ResponseInboxDto {
-    /**
-     *
-     * @type {string}
-     * @memberof ResponseInboxDto
-     */
-    message?: string;
-    /**
-     *
-     * @type {InboxDto}
-     * @memberof ResponseInboxDto
-     */
-    payload?: InboxDto;
-}
-/**
- *
- * @export
- * @interface ResponseListEmailDto
- */
-export interface ResponseListEmailDto {
-    /**
-     *
-     * @type {string}
-     * @memberof ResponseListEmailDto
-     */
-    message?: string;
-    /**
-     *
-     * @type {Array&lt;EmailDto&gt;}
-     * @memberof ResponseListEmailDto
-     */
-    payload?: Array<EmailDto>;
-}
-/**
- *
- * @export
- * @interface ResponseListInboxDto
- */
-export interface ResponseListInboxDto {
-    /**
-     *
-     * @type {string}
-     * @memberof ResponseListInboxDto
-     */
-    message?: string;
-    /**
-     *
-     * @type {Array&lt;InboxDto&gt;}
-     * @memberof ResponseListInboxDto
-     */
-    payload?: Array<InboxDto>;
 }
 /**
  *
@@ -501,7 +501,7 @@ export declare const InboxControllerApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createRandomInboxUsingPOST(apiKey: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ResponseInboxDto>;
+    createRandomInboxUsingPOST(apiKey: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ApiReponseInboxDto>;
     /**
      * Delete an inbox and all the emails associated with it.
      * @summary Delete an inbox
@@ -510,7 +510,7 @@ export declare const InboxControllerApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteInboxUsingDELETE(apiKey: string, uuid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response>;
+    deleteInboxUsingDELETE(apiKey: string, uuid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ApiReponse>;
     /**
      * Return a list of emails stored in a given inbox. Each email contains various properties including the email body (in eml format), subject, and sender. The `since` parameter is a ISO8601 LocalDateTime that will filter for emails received on or after the given DateTime. Note that because an inbox may take 5 to 10 seconds to receive an email, you can use the `waitFor` parameter to hold a request open until the desired number of emails is present. If this number is not met after 100 seconds, an error will be returned.
      * @summary Fetch emails for a given inbox
@@ -522,7 +522,7 @@ export declare const InboxControllerApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getEmailsForInboxUsingGET(apiKey: string, uuid: string, minCount?: number, maxWait?: number, since?: Date, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ResponseListEmailDto>;
+    getEmailsForInboxUsingGET(apiKey: string, uuid: string, minCount?: number, maxWait?: number, since?: Date, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ApiReponseListEmailDto>;
     /**
      * Return a list of your inboxes. Each inbox has a uuid and an email address. Emails sent to the email address are stored in the inbox and can be fetched via `/inboxes/{uuid}`.
      * @summary List your inboxes
@@ -530,7 +530,7 @@ export declare const InboxControllerApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getListOfInboxesUsingGET(apiKey: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ResponseListInboxDto>;
+    getListOfInboxesUsingGET(apiKey: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ApiReponseListInboxDto>;
     /**
      * Send an email from the given inbox's email address. Useful if you need to test a user contacting you, for instance.
      * @summary Send an email
@@ -540,7 +540,7 @@ export declare const InboxControllerApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    sendEmailFromUserUsingPOST(apiKey: string, uuid: string, sendEmailDto: SendEmailDto, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response>;
+    sendEmailFromUserUsingPOST(apiKey: string, uuid: string, sendEmailDto: SendEmailDto, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ApiReponse>;
 };
 /**
  * InboxControllerApi - factory interface
@@ -554,7 +554,7 @@ export declare const InboxControllerApiFactory: (configuration?: Configuration, 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createRandomInboxUsingPOST(apiKey: string, options?: any): Promise<ResponseInboxDto>;
+    createRandomInboxUsingPOST(apiKey: string, options?: any): Promise<ApiReponseInboxDto>;
     /**
      * Delete an inbox and all the emails associated with it.
      * @summary Delete an inbox
@@ -563,7 +563,7 @@ export declare const InboxControllerApiFactory: (configuration?: Configuration, 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteInboxUsingDELETE(apiKey: string, uuid: string, options?: any): Promise<Response>;
+    deleteInboxUsingDELETE(apiKey: string, uuid: string, options?: any): Promise<ApiReponse>;
     /**
      * Return a list of emails stored in a given inbox. Each email contains various properties including the email body (in eml format), subject, and sender. The `since` parameter is a ISO8601 LocalDateTime that will filter for emails received on or after the given DateTime. Note that because an inbox may take 5 to 10 seconds to receive an email, you can use the `waitFor` parameter to hold a request open until the desired number of emails is present. If this number is not met after 100 seconds, an error will be returned.
      * @summary Fetch emails for a given inbox
@@ -575,7 +575,7 @@ export declare const InboxControllerApiFactory: (configuration?: Configuration, 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getEmailsForInboxUsingGET(apiKey: string, uuid: string, minCount?: number, maxWait?: number, since?: Date, options?: any): Promise<ResponseListEmailDto>;
+    getEmailsForInboxUsingGET(apiKey: string, uuid: string, minCount?: number, maxWait?: number, since?: Date, options?: any): Promise<ApiReponseListEmailDto>;
     /**
      * Return a list of your inboxes. Each inbox has a uuid and an email address. Emails sent to the email address are stored in the inbox and can be fetched via `/inboxes/{uuid}`.
      * @summary List your inboxes
@@ -583,7 +583,7 @@ export declare const InboxControllerApiFactory: (configuration?: Configuration, 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getListOfInboxesUsingGET(apiKey: string, options?: any): Promise<ResponseListInboxDto>;
+    getListOfInboxesUsingGET(apiKey: string, options?: any): Promise<ApiReponseListInboxDto>;
     /**
      * Send an email from the given inbox's email address. Useful if you need to test a user contacting you, for instance.
      * @summary Send an email
@@ -593,7 +593,7 @@ export declare const InboxControllerApiFactory: (configuration?: Configuration, 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    sendEmailFromUserUsingPOST(apiKey: string, uuid: string, sendEmailDto: SendEmailDto, options?: any): Promise<Response>;
+    sendEmailFromUserUsingPOST(apiKey: string, uuid: string, sendEmailDto: SendEmailDto, options?: any): Promise<ApiReponse>;
 };
 /**
  * InboxControllerApi - object-oriented interface
@@ -610,7 +610,7 @@ export declare class InboxControllerApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InboxControllerApi
      */
-    createRandomInboxUsingPOST(apiKey: string, options?: any): Promise<ResponseInboxDto>;
+    createRandomInboxUsingPOST(apiKey: string, options?: any): Promise<ApiReponseInboxDto>;
     /**
      * Delete an inbox and all the emails associated with it.
      * @summary Delete an inbox
@@ -620,7 +620,7 @@ export declare class InboxControllerApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InboxControllerApi
      */
-    deleteInboxUsingDELETE(apiKey: string, uuid: string, options?: any): Promise<Response>;
+    deleteInboxUsingDELETE(apiKey: string, uuid: string, options?: any): Promise<ApiReponse>;
     /**
      * Return a list of emails stored in a given inbox. Each email contains various properties including the email body (in eml format), subject, and sender. The `since` parameter is a ISO8601 LocalDateTime that will filter for emails received on or after the given DateTime. Note that because an inbox may take 5 to 10 seconds to receive an email, you can use the `waitFor` parameter to hold a request open until the desired number of emails is present. If this number is not met after 100 seconds, an error will be returned.
      * @summary Fetch emails for a given inbox
@@ -633,7 +633,7 @@ export declare class InboxControllerApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InboxControllerApi
      */
-    getEmailsForInboxUsingGET(apiKey: string, uuid: string, minCount?: number, maxWait?: number, since?: Date, options?: any): Promise<ResponseListEmailDto>;
+    getEmailsForInboxUsingGET(apiKey: string, uuid: string, minCount?: number, maxWait?: number, since?: Date, options?: any): Promise<ApiReponseListEmailDto>;
     /**
      * Return a list of your inboxes. Each inbox has a uuid and an email address. Emails sent to the email address are stored in the inbox and can be fetched via `/inboxes/{uuid}`.
      * @summary List your inboxes
@@ -642,7 +642,7 @@ export declare class InboxControllerApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InboxControllerApi
      */
-    getListOfInboxesUsingGET(apiKey: string, options?: any): Promise<ResponseListInboxDto>;
+    getListOfInboxesUsingGET(apiKey: string, options?: any): Promise<ApiReponseListInboxDto>;
     /**
      * Send an email from the given inbox's email address. Useful if you need to test a user contacting you, for instance.
      * @summary Send an email
@@ -653,7 +653,7 @@ export declare class InboxControllerApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InboxControllerApi
      */
-    sendEmailFromUserUsingPOST(apiKey: string, uuid: string, sendEmailDto: SendEmailDto, options?: any): Promise<Response>;
+    sendEmailFromUserUsingPOST(apiKey: string, uuid: string, sendEmailDto: SendEmailDto, options?: any): Promise<ApiReponse>;
 }
 /**
  * UserControllerApi - fetch parameter creator
