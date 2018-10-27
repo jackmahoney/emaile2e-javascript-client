@@ -5,6 +5,7 @@ var fs = require('fs');
 var packagePath = './package.json';
 var packageJson = JSON.parse(fs.readFileSync(packagePath, 'utf-8'));
 packageJson['name'] = "mailslurp-client";
+packageJson['scripts']['postinstall'] = "";
 packageJson['version'] = "2.2." + Date.now();
 packageJson['description'] = "Generated JS/Typescript client for the MailSlurp email testing API. See https://www.mailslurp.com/docs for more information.";
 packageJson['repository'] = {
